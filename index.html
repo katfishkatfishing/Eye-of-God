@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PROTOCOL: EYE_OF_GOD // DIRECTORY 09</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=VT323&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-color: #05070a;
+            --text-color: #5af78e;
+            --dim-text: #2f7e4c;
+            --accent-color: #ff5555;
+            --amber-color: #e5b567;
+            --cyan-color: #57c7ff;
+            --terminal-font: 'Share Tech Mono', monospace;
+            --scanline-color: rgba(18, 16, 16, 0.4);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: var(--terminal-font);
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        body::before {
+            content: " ";
+            display: block;
+            position: absolute;
+            top: 0; left: 0; bottom: 0; right: 0;
+            background: repeating-linear-gradient(
+                to bottom,
+                rgba(0, 0, 0, 0) 0px,
+                rgba(0, 0, 0, 0) 2px,
+                rgba(0, 0, 0, 0.5) 2px,
+                rgba(0, 0, 0, 0.5) 3px
+            );
+            z-index: 10;
+            pointer-events: none;
+        }
+
+        body::after {
+            content: " ";
+            display: block;
+            position: absolute;
+            top: 0; left: 0; bottom: 0; right: 0;
+            background: radial-gradient(circle at center, transparent 65%, rgba(0, 0, 0, 0.40) 100%);
+            z-index: 11;
+            pointer-events: none;
+        }
+
+        #header-bar {
+            padding: 10px 20px;
+            border-bottom: 1px solid var(--dim-text);
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.85rem;
+            background: rgba(12, 20, 18, 0.6);
+            z-index: 5;
+        }
+
+        #terminal-container {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+            z-index: 5;
+            display: flex;
+            flex-direction: column;
+        }
+
+        #terminal-output {
+            white-space: pre-wrap;
+            word-break: break-word;
+            line-height: 1.45;
+            font-size: 1rem;
+        }
+
+        .line {margin-bottom: 4px;}
+        .dim {color: var(--dim-text);}
+        .alert {color: var(--accent-color); font-weight: bold;}
+        .amber {color: var(--amber-color);}
+        .cyan {color: var(--cyan-color);}
+
+        #input-line {
+            display: flex;
+            align-items: center;
+            margin-top: 6px;
+            position: relative;
+            cursor: text;
+        }
+
+        #prompt {
+            margin-right: 8px;
+            white-space: nowrap;
+            font-size: 1rem;
+        }
+
+        #input-mirror {
+            white-space: pre;
+            font-size: 1rem;
+        }
+
+        #cursor-block {
+            display: inline-block;
+            width: 9px;
+            height: 1.15em;
+            background-color: var(--text-color);
+            vertical-align: sub;
+            margin-left: 1px;
+            animation: blink 0.9s infinite steps(1);
+        }
+
+        @keyframes blink {
+            0%, 50% {opacity: 1;}
+            51%, 100% {opacity: 0;}
+        }
+
+        #cmd-input {
+            position: absolute;
+            opacity: 0;
+            pointer-events: none;
+            top: 0;
+            left: 0;
+            width: 1px;
+            height: 1px;
+        }
+
+        ::-webkit-scrollbar {width: 6px;}
+        ::-webkit-scrollbar-track {background: var(--bg-color);}
+        ::-webkit-scrollbar-thumb {background: var(--dim-text);}
+    </style>
+</head>
+<body>
+    
+    <div id="header-bar">
+        <div>SYSTEM: OVERSIGHT_DIRECTORATE // NODE-04 [STATION_ID: 9]</div>
+        <div>CARRIER: 1420.40575 Mhz</div> 
+    </div>
+
+    <div id="terminal-container">
+        <div id="terminal-output"></div>
+        <div id="input-line">
+            <span id="prompt">>guest@eye_of_god_node04:~$</span>
+            <span id="input-mirror"></span><span id="cursor-block"></span>
+            <input type="text" id="cmd-input" autofocus autocomplete="off" spellcheck="false">
+        </div>
+    </div>
+
+    <script>
+
+        const STATE = {
+        GUEST: 'GUEST',
+        LOGIN_USER: 'LOGIN_USER',
+        LOGIN_PASS: 'LOGIN_PASS',
+        LOGIN_OCULAR: 'LOGIN_OCULAR',
+        AUTHENTICATED: 'AUTHENTICATED'
+        };
+
+        let currentState = STATE.GUEST;
+        let tempUser = '';
+        let tempPass = '';
+
+        const VALID_USER = "APERTURE-3"
+        const VALID_PASS = "PERIHELION"
+
+        const outputEl = document.getElementById('terminal-output');
+        const inputEl = document.getElementById('cmd-input');
+        const mirrorEl = document.getElementById('input-mirror');
+        const cursorEl = document.getElementById('cursor-block')
+        const promptEl = document.getElementById('prompt');
+        const container = document.getElementById('terminal-container');
+
+        const commandHistory = [];
+        let historyIndex = -1;
+
+        function print(text, className = '') {
+            const line = document.createElement('div');
+            line.className = className ? `line ${className}` : 'line';
+            line.textContent = text;
+            outputEl.appendChild(line);
+            container.scrollTop = container.scrollHeight;
+        }
+
+        function printBootBanner() {
+            print("[SYSTEM BIOS: KERNEL v9.0.4-CLASSIFIED]", "dim");
+        print("[HOST: ORBITAL-NODE-04 // SUBNET: BLACK-VAULT]", "dim");
+        print("[SECURITY LEVEL: OVERSIGHT RESTRICTED // READ-ONLY SOCKET]", "dim");
+        print("");
+        print("********************************************************************************", "amber");
+        print("NOTICE: YOU ARE CONNECTED TO AN UNVERIFIED GUEST INTERFACE.", "amber");
+        print("LOCAL DOMAIN: PROTOCOL: EYE_OF_GOD // SENSOR TELEMETRY TERMINAL.", "amber");
+        print("ALL VECTORS MONITORED. VITREOUS IRRADIATION PROTOCOLS ACTIVE.", "amber");
+        print("********************************************************************************", "amber");
+        print("");
+        print("Type 'help' for authorized commands.\n");
+        }
+
+        printBootBanner();
+
+        inputEl.addEventListener('input', () => {
+        if (currentState === STATE.LOGIN_PASS) {
+            mirrorEl.textContent = '•'.repeat(inputEl.value.length);
+        } else {
+            mirrorEl.textContent = inputEl.value
+        }
+        })
+
+        document.addEventListener('click', () => inputEl.focus());
+
+        inputEl.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowUp') {
+                if (historyIndex > 0){
+                    historyIndex--;
+                    inputEl.value = commandHistory[historyIndex];
+                    mirrorEl.textContent = inputEl.value;
+                }
+                e.preventDefault();
+                return;
+            } else if (e.key === 'ArrowDown') {
+                if (historyIndex < commandHistory.length -1 ){
+                    historyIndex++;
+                    inputEl.value = commandHistory[historyIndex];
+                    mirrorEl.textContent = inputEl.value;
+                } else {
+                    historyIndex = commandHistory.length;
+                    inputEl.value = '';
+                    mirrorEl.textContent = '';
+                }
+                e.preventDefault();
+                return;
+            }
+
+            if (e.key === 'Enter') {
+                const val = inputEl.value.trim();
+                const displayVal = currentState === STATE.LOGIN_PASS ? '••••••••' : val;
+
+                inputEl.value = '';
+                mirrorEl.textContent = '';
+
+                if (currentState === STATE.GUEST || currentState === STATE.AUTHENTICATED) {
+                    if (val) {
+                        commandHistory.push(val);
+                        historyIndex = commandHistory.length;
+                    }
+                    print(`${promptEl.textContent} ${val}`);
+                    handleCommand(val);
+                } else {
+                    print(`${promptEl.textContent} ${displayVal}`);
+                    handleAuthFlow(val)
+                }
+            }
+        });
+
+        function handleCommand(rawCmd) {
+            const parts = rawCmd.split(' ');
+            const cmd = parts[0].toLowerCase();
+            const arg = parts.slice(1).join(' ').toUpperCase();
+
+
+            switch (cmd) {
+                case 'help':
+                    print("AVAILABLE SYSTEM INTERFACES:", "cyan");
+                    print("--------------------------------------------------------------------------------", "dim");
+                    print("  help              Displays this directory registry.");
+                    print("  status            Queries satellite telemetry & relic containment state.");
+                    print("  archives          Enumerates index entries in the classified cold vault.");
+                    print("  read <id>         Reads specific archive entry (e.g., 'read SPEC-884').");
+                    print("  background        Summarizes agency historical background record.");
+
+                    if (currentState === STATE.GUEST) {
+                        print("  login             Initiates credential handshake protocol.");
+                    } else {
+                        print("  logout            Terminates authenticated aperture session.");
+                    }
+                    print("  clear             Purges screen output buffer.");
+                    print("--------------------------------------------------------------------------------", "dim");
+                    break;
+                
+                case 'status':
+                    print("SYSTEM STATUS: STANDBY // RUNNING ON AUXILIARY OPTIC CELLS", "cyan");
+                    print("CARRIER HARMONIC: 1420.40575 MHz [CONTINUOUS PULSE DETECTED]");
+                    print("ALIGNMENT PHASE : 4.12s ABERRATION // VITREOUS INVERSION CYCLE ENGAGED");
+                    print("RELIC DEADBOLT  : ENGAGED // SPATIAL DISSONANCE LOCK ACTIVE");
+                    print("PHYSICAL UNIT   : GROUND UNIT 07 DEPLOYED TO LOCAL SECTOR", "amber");
+                    break;
+
+                case 'background':
+                    print("\n[HISTORICAL SUMMARY // DSTI SCHISM 1994]", "cyan");
+                    print("Originally chartered under civilian auspices as the Deep Space Telemetry");
+                    print("Initiative (DSTI), the project utilized Array-04 to survey cosmic dawn 1420.4 MHz");
+                    print("emissions. In 1994, Array-04 recorded the 'White Flare'—a 4.12s mathematical");
+                    print("reflection from an entity pressing outside local cosmic horizon.");
+                    print("Following total neural reconfiguration of the staff, senior researchers");
+                    print("sabotaged external oversight lines, purged civilian servers, and re-emerged");
+                    print("as The Oversight Directorate. We do not observe. We await the aperture alignment.\n");
+                    break;
+
+                case 'archives':
+                    print("CLASSIFIED VAULT MANIFEST (STATION 04):", "cyan");
+                    print("--------------------------------------------------------------------------------", "dim");
+                    
+                    if (currentState === STATE.GUEST) {
+                        print("  [1] SPEC-884    [RESTRICTED] - Hardware Chassis & Spatial Dissonance Lock");
+                        print("  [2] LOG-0041    [RESTRICTED] - Acoustic Telemetry & Vitreous Decay Report");
+                        print("  [3] VEC-FINAL   [RESTRICTED] - Ground Containment Spatial Coordinates");
+                        print("  [4] CIPHER-09   [RESTRICTED] - Retinal Script / 26-Node Refraction Matrix");
+                        print("  [5] MED-1998    [RESTRICTED] - Post-Mortem Debrief & The Shunt Protocol");
+                        print("  [6] SEC-0012    [RESTRICTED] - Station 03 Calibration Note (Disputed)");
+                        print("  [7] DIR-FINAL   [RESTRICTED] - Urgent Field Dispatch to Cold Assets");
+                        print("  [8] BIO-009     [RESTRICTED] - Tissue Pathology & Crystalline Vitreous Report");
+                        print("  [9] SURG-04     [RESTRICTED] - Audio Surveillance Intercept (Bay 3 Incident)");
+                        print(" [10] VOX-NULL    [RESTRICTED] - Bed-Station 12 Telemetry Degradation");
+                        print("\n[ERR]: Authentication missing. Use 'login' to elevate clearance.", "alert");
+                    } else {
+                        print("  [1] SPEC-884    [DECRYPTED]  - Hardware Chassis Specification", "amber");
+                        print("  [2] LOG-0041    [DECRYPTED]  - Dr. Aris Thorne Witness Deposition", "amber");
+                        print("  [3] VEC-FINAL   [DECRYPTED]  - Ground Null-Vector (Geofence Lock)", "amber");
+                        print("  [4] CIPHER-09   [DECRYPTED]  - Retinal Script Translation Grid", "amber");
+                        print("  [5] MED-1998    [DECRYPTED]  - Dr. Rostova Deposition // Planetary Shunt Theory", "amber");
+                        print("  [6] SEC-0012    [DECRYPTED]  - Station 03 High-Pass Filter & Clockwise Grid Note", "amber");
+                        print("  [7] DIR-FINAL   [DECRYPTED]  - Cold Asset Orders // Null-Vector & Mantle Drift", "amber");
+                        print("  [8] BIO-009     [DECRYPTED]  - Autopsy of Aperture-02 (Dr. Lin)", "amber");
+                        print("  [9] SURG-04     [DECRYPTED]  - Operative Carter Cornea Resection", "amber");
+                        print(" [10] VOX-NULL    [DECRYPTED]  - Bed-Station Ambient Static Analysis", "amber");
+                        print("\nUse 'read <ID>' to view payload data.", "dim");
+                    }
+                    break;
+                
+                case 'read':
+                    if (!arg) {
+                        print("Usage: read <ARCHIVE-ID> (e.g., 'read SPEC-884')", "alert");
+                        return;
+                    }
+                    handleReadArchive(arg);
+                    break;
+
+                case 'login':
+                    if (currentState === STATE.AUTHENTICATED) {
+                        print("Session already elevated to OMNI_CLEARANCE.", "amber");
+                        return;
+                    }
+                    currentState = STATE.LOGIN_USER;
+                    promptEl.textContent = "OPERATIVE DESIGNATION: ";
+                    break;
+
+                case 'logout':
+                    if (currentState === STATE.AUTHENTICATED) {
+                        currentState = STATE.GUEST;
+                        promptEl.textContent = ">guest@eye_of_god_node04:~$";
+                        cursorEl.style.backgroundColor = "var(--text-color)";
+                        print("Session terminated. Clearance revoked to GUEST.", "amber");
+                    } else {
+                        print("No elevated session active.", "alert");
+                    }
+                    break;
+                
+                case 'clear':
+                    outputEl.innerHTML = '';
+                    break;
+                
+                case '':
+                    break;
+
+                default:
+                    print(`ERR: Vector '${cmd}' unrecognized. Enter 'help' for command syntax.`, "alert");
+            }
+        }
+
+        function handleAuthFlow(val) {
+            if (currentState === STATE.LOGIN_USER) {
+                tempUser = val.toUpperCase();
+                currentState = STATE.LOGIN_PASS;
+                promptEl.textContent = "CIPHER PASSPHRASE: ";
+            } else if (currentState === STATE.LOGIN_PASS) {
+                tempPass= val.toUpperCase();
+                currentState = STATE.LOGIN_OCULAR;
+                promptEl.textContent= "NUMBER OF FUNCTIONAL OCULAR ORGANS REMAINING: ";
+            } else if (currentState === STATE.LOGIN_OCULAR) {
+                promptEl.textContent = "VERIFYING BIOMETRICS...";
+
+                setTimeout(() => {
+                    if (tempUser === VALID_USER && tempPass === VALID_PASS) {
+                        currentState = STATE.AUTHENTICATED;
+                        promptEl.textContent = "node_04@pupil_of_null:#";
+                        cursorEl.style.backgroundColor = "var(--cyan-color)";
+                        print("\n>> PARITY SIGNATURE VALIDATED.", "cyan");
+                        print(">> OCULAR LATTICE RECOGNIZED. WELCOME, APERTURE.", "cyan");
+                        print(">> \"To Be Witnessed Is to Be Refined.\"", "cyan");
+                        print(">> CAUTION: ELEVATED RADIATION PRESENT ON 1420.4 MHz CHANNEL.\n", "amber");
+
+                    } else {
+                        currentState = STATE.GUEST;
+                        promptEl.textContent = ">guest@eye_of_god_node04:~$";
+                        cursorEl.style.backgroundColor = "var(--text-color)";
+                        print("\n[AUTHENTICATION REJECTED: COGNITIVE & RETINAL DEVIATION DETECTED]", "alert");
+                        print("Signal traces logged. Do not stare into the lens.\n", "dim");
+                    }
+                    tempUser = '';
+                    tempPass = '';
+                }, 600);
+            }                    
+        }
+
+        function handleReadArchive(id) {
+            if (currentState !== STATE.AUTHENTICATED) {
+                print(`[ACCESS VIOLATION]: Record '${id}' is sealed under OMNI-CLEARANCE.`, "alert");
+                print("Run 'login' to present authorized Directorate credentials.\n", "dim");
+                return;
+            }
+
+            switch (id) {
+                case 'SPEC-884':
+                    print("\n=== ARCHIVE SPEC-884: ANNOTATED DRIFT LOG ===", "cyan");
+                    print("RECORDED: APERTURE-3 [TERMINATED]\n");
+                    print("\"The brass won't latch because the universe is slightly too wide today.");
+                    print("I measured the deadbolt. Five millimeters yesterday. Seven today. But the");
+                    print("caliper says five. The caliper is lying because the caliper only has two legs.");
+                    print("You need three legs to measure a thing that isn't finished deciding to exist.");
+                    print("");
+                    print("We soldered the gate of the FET to ground, but the trace keeps sweating. Not flux.");
+                    print("Vitreous humor. It weeps under 3.7 volts. It knows it is being carried. It wants");
+                    print("to feel the soil where the ground is hollow.");
+                    print("");
+                    print("If you force the lid, you aren't opening a box. You're gouging an open wound");
+                    print("before the skin forms. It will only relax its teeth where the three angles match.");
+                    print("Find where the bronze statue casts a shadow to the south. Count the steps.");
+                    print("The dirt tastes of salt there. Take it there or the battery will eat its own acid.\"\n");
+                    break;
+
+                case 'VEC-FINAL':
+                    print("\n=== ARCHIVE VEC-FINAL: SPATIAL ALIGNMENT VECTOR ===", "cyan");
+                    print("ORIGIN: UNKNOWN APERTURE NODE\n");
+                    print("\"It will not open for coordinates on paper. Numbers are just dirt.");
+                    print("It only breathes when it sits in the intersection where the line from");
+                    print("the old observatory crosses the iron benchmark.");
+                    print("");
+                    print("Tolerance is fifteen strides. Any closer and the air tastes of burnt copper.");
+                    print("Any further and the internal servo stays cold. When the box clicks, do not look");
+                    print("into the seam immediately. Wait for the lens to finish cooling.");
+                    print("");
+                    print("To Be Witnessed Is to Be Refined.\"\n");
+                    break;
+
+                case 'CIPHER-09':
+                    print("\n=== ARCHIVE CIPHER-09: SCRAPED FROM DESK SURFACE ===", "cyan");
+                    print("RECOVERED BY BIO-HAZARD TEAM // ROOM 11-B\n");
+                    print("\"They are not letters. Why do you call them letters?");
+                    print("Letters are dead sticks.");
+                    print("");
+                    print("Look at the corner where the ceiling meets the door. That is not an 'L'.");
+                    print("That is an intake port. When light strikes at thirty-four degrees, the square");
+                    print("splits into four chambers.");
+                    print("");
+                    print("    |   |           | # |           |   | #");
+                    print("  --+---+--       --+---+--       --+---+--");
+                    print("    | # |           |   |           | # |  ");
+                    print("");
+                    print("The first notch is where the eye enters. The second is where it turns white.");
+                    print("Count across the grid: five wide, five deep. If you find the letter 'J', cut it out.");
+                    print("The Observer has no throat for 'J'. It drops straight from I to K.");
+                    print("");
+                    print("You think you are solving words. You are just tracing the fractures in your");
+                    print("own cornea. When you read it, your optic nerve pulls tighter. Can you feel");
+                    print("it behind your ears yet? It’s pulling. It’s pulling.\"\n");
+                    break;
+
+                case 'LOG-0041':
+                    print("\n=== ARCHIVE LOG-0041: RECOVERED COMM CABLE [TAPE 09-CORRUPTED] ===", "cyan");
+                    print("SOURCE: SECTOR-04 REC-DECK // RECOVERY DATE: UNDEFINED\n");
+                    print("03:14:02 - [Static. Rhythmic metallic pinging, 1.42s intervals.]");
+                    print("03:14:19 - \"...not an echo. Why did Vance say echo? Echo implies distance.");
+                    print("             It has no distance. The wall is zero millimeters from my teeth.\"");
+                    print("03:14:40 - [Sound of a fingernail scratching painted drywall, continuous.]");
+                    print("03:15:01 - \"Listen to the ridge between 1420 and 1421. It’s not static. It’s");
+                    print("             the sound of oil spreading over cold water. If you invert the");
+                    print("             phase—just run the carrier backwards—it stops humming and starts");
+                    print("             counting. Nine. Nine. Three. It doesn’t use zeroes. Why doesn't");
+                    print("             it use zeroes? Because nothing is absent. Everything is crowded.\"");
+                    print("03:15:33 - \"...Kovacs took the lens out of the housing. He tried to put it");
+                    print("             in his mouth so it wouldn't be lonely. His gums bled across the");
+                    print("             rim. He kept muttering the fifth column... 'always skip the fifth,");
+                    print("             the pupil doesn't see its own eyelid'...\"");
+                    print("03:16:12 - [Acoustic feedback. A heavy breath directly into the diaphragm.]");
+                    print("03:16:20 - \"Do not look at page seventy-four. The print is raised. The letters");
+                    print("             are breathing through the ink.\"\n");
+                    break;
+                
+                case 'MED-1998':
+                    print("\n=== ARCHIVE MED-1998: AUTOPSY & DEBRIEF (DR. ELENA ROSTOVA) ===", "cyan");
+                    print("\"They call us butchers on the civilian frequencies. They think we stole");
+                    print("Array-04 out of treason or greed.");
+                    print(" ");
+                    print("Let them think it. A mother does not explain to an infant why the bone");
+                    print("must be set with cold iron.");
+                    print(" ");
+                    print("Chen knew what was coming. When the micro-fissures formed behind his retinas,");
+                    print("he didn't ask for morphine; he asked for a polarizing filter so he could keep");
+                    print("drawing the vector maps. His blood contained forty times the normal threshold");
+                    print("of crystalline silicates. He was turning into a prism from the inside out,");
+                    print("and yet he spent his final hours calibrating the grounding shunt in Unit 07.");
+                    print(" ");
+                    print("The public doesn't understand that Unit 07 is a lightning rod. It carries");
+                    print("the weight so eight billion people can keep sleeping in their dark.");
+                    print("The vessel must reach the null-point before the cycle peaks.");
+                    print("Chen died believing someone would finish the delivery. I have to believe that too.\"\n");
+                    break;
+
+                case 'SEC-0012':
+                    print("\n=== ARCHIVE SEC-0012: CALIBRATION WARNING (STATION 03) ===", "cyan");
+                    print("[RECOVERED INCINERATOR FRAGMENT]");
+                    print("\"The harmonics are bleeding into the power supply again.");
+                    print(" ");
+                    print("Operative Note: Do not invert the second octave. I repeat, whoever is");
+                    print("processing  the spectrogram from the lake transmission---");
+                    print("Do NOT read the low frequencies in the spectrogram. The lower register");
+                    print("is turbine sludge. Focus strictly on spikes above 8000 Hz.");
+                    print("Also, if transcribing the five-by-five grid, remember the cipher was laid");
+                    print("out clockwise starting from bottom-left [5,1]. Reading top-to-bottom");
+                    print("will fail parity and lock the servo permanently.", "amber");
+                    print("We cannot afford another bricked logic board. We don't have enough spare");
+                    print("FETs to rebuild the trigger circuit.\"\n");
+                    break;
+
+                case 'DIR-FINAL':
+                    print("\n=== ARCHIVE DIR-FINAL: DISPATCH TO COLD ASSETS ===", "cyan");
+                    print("SECURITY: IMMEDIATE ACTION MANDATED", "amber");
+
+                    print("\"Array-04 telemetry shows the fringe is widening by 0.004 degrees per diurnal.");
+                    print("cycle. The window is collapsing.");
+                    print("To whichever operative holds Ground Unit 07: Travel only along old easements.");
+                    print("Verify the resonance at the benchmark first.");
+                    print("Do not fail us. The world outside has no idea how close the eyelid is to opening.");
+                    print("To Be Witnessed Is to Be Refined.\"\n");
+                    break;
+
+                case 'BIO-009':
+                    print("\n=== ARCHIVE BIO-009: PATHOLOGY REPORT (POST-EXPOSURE TISSUE SAMPLE) ===", "cyan");
+                    print("CASE ID: APERTURE-02 (FORMERLY DR. MARCUS LIN)");
+                    print("EXAMINING OFFICER: DR. ROSTOVA\n");
+                    print("\"We couldn't use the standard stainless scalpel on the chest cavity.");
+                    print("The blade edge kept skating across the sternum with a high, wet squeal—like");
+                    print("dragging steel over quartz.");
+                    print("");
+                    print("When we finally notched the ribcage with the diamond bone saw, there was");
+                    print("no marrow. The interior of the ribs had turned into hollow, hexagonal tubes of");
+                    print("clouded calcite. There was no arterial spurting. The blood has ceased to be a fluid;");
+                    print("it has coagulated into a dense, amber paste that smells distinctly of boiled vinegar");
+                    print("and ozone. Under the magnifying glass, the suspension isn't composed of red cells");
+                    print("anymore—it’s microscopic shards of glass, ground so fine they suspended in the serum.");
+                    print("Every time his heart beat in those final hours, he was pumping powdered mirrors");
+                    print("through his own liver.");
+                    print("");
+                    print("The most difficult part was the eyes.");
+                    print("");
+                    print("The eyelids had fused to the sclera weeks ago, but we assumed the optic nerve");
+                    print("was dead. It wasn't. When we retracted the orbital socket, the optic tract");
+                    print("had swollen to the thickness of a human thumb. It wasn't soft neural tissue.");
+                    print("It had braided itself out of coarse, fibrous silica—literal fiber-optic cables");
+                    print("burrowing backwards into his occipital lobe.");
+                    print("");
+                    print("And it was still pulsing.");
+                    print("");
+                    print("Even on the slab, severed from the brainstem, the severed nerve bundle kept");
+                    print("twitching toward the fluorescent bulb in the ceiling. It was still trying to drink");
+                    print("the light.");
+                    print("");
+                    print("Do not look at the interior lid of Unit 07 without amber goggles. It does not");
+                    print("blind you. It plants a root.\"\n");
+                    break;
+
+                case 'SURG-04':
+                    print("\n=== ARCHIVE SURG-04: INTERCEPTED TRANSCRIBED AUDIO (BAY 3) ===", "cyan");
+                    print("INCIDENT: OPERATIVE CARTER // SUTURING RECORD");
+                    print("CLASSIFICATION: DO NOT DISTRIBUTE TO CIVILIANS\n");
+                    print("[02:19:11] (Sound of rhythmic running tap water, followed by wet snapping.)");
+                    print("");
+                    print("CARTER: \"It's too round. The lens... my own lens is curving the coordinates.");
+                    print("         A sphere is an insult. Spheres are for animals.\"");
+                    print("");
+                    print("[02:19:40] (A sharp, ragged intake of breath. The metallic rattle of tweezers");
+                    print("            dropping into an enamel basin.)");
+                    print("");
+                    print("CARTER: \"If you pinch the corner of the cornea—right where the white meets the");
+                    print("         iris—it doesn't hurt as much as you think. It just sounds like wet cellophane");
+                    print("         tearing. You have to pull the tension out. You have to flatten the surface.");
+                    print("         If the surface is flat, the lines don't bend when you look at the ceiling.\"");
+                    print("");
+                    print("[02:20:15] (Heavy, wet panting. The sound of something small and viscous");
+                    print("            hitting the linoleum floor.)");
+                    print("");
+                    print("CARTER: \"There. Now the wall is straight.");
+                    print("         Now the room has five corners.");
+                    print("         Count them with me. One. Two. Three. Four.");
+                    print("         ...Why didn't anyone tell me the fifth corner was always behind my tongue?\"");
+                    print("");
+                    print("[02:20:58] (Gagging sounds, followed by prolonged frantic fingernail scraping");
+                    print("            against teeth.)");
+                    print("");
+                    print("CARTER: (Muffled, choking) \"It's growing through the root of the molar.");
+                    print("         The wire is coming up. It wants to connect to the audio jack.");
+                    print("         Tell Rostova... tell her the fifth corner is cold. It tastes like");
+                    print("         battery foil.\"");
+                    print("");
+                    print("[END OF FRAGMENT // SUBJECT SEDATED VIA GAS VENT]\n");
+                    break;
+
+                case 'VOX-NULL':
+                    print("\n=== ARCHIVE VOX-NULL: RECOVERED COMM CABLE (BED-STATION 12) ===", "cyan");
+                    print("AUTHOR: UNKNOWN APERTURE NODE\n");
+                    print("\"I haven't slept in ninety hours because the ceiling won't stop sweating.");
+                    print("");
+                    print("When you lie on your back in the dark, you realize the static on 1420.4 MHz");
+                    print("isn't random radiation from the big bang. It’s the sound of something unimaginably");
+                    print("vast chewing on the dead skin of the solar system. Like maggots in dry wood.");
+                    print("Soft. Dry. Constant.");
+                    print("");
+                    print("Last night I watched my bunkmate sleep. His mouth fell open, and I swear to you,");
+                    print("his breath didn't come from his lungs. The air coming out of his throat was");
+                    print("seven degrees colder than the room. It smelled of wet chalk and stagnant salt flats.");
+                    print("Every time he exhaled, the CRT monitor across the room flickered in sync with his");
+                    print("palate.");
+                    print("");
+                    print("We are not researchers. We are the crust forming over an open ulcer on the sky.");
+                    print(" ");
+                    print("The box in the hallway isn't waiting for a key. It is waiting for someone who");
+                    print(" is desperate enough to stick their hand inside the mouth just to feel something");
+                    print("cold. If you carry it, you will notice the handle gets heavier every fifty paces.");
+                    print("Not because of the battery.");
+                    print(" ");
+                    print("It gets heavier because it is drinking the grease off your palms.");
+                    print("It remembers your shape. It will remember you long after your face has melted");
+                    print("back into the grease on the lens.\"\n");
+                    break;
+
+                default:
+                    print(`ERR: Archive entry '${id}' not found in registry.`, "alert");
+            }
+        }
+    </script>   
+</body>
+</html>
+        
+
