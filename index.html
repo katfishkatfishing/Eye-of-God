@@ -31,6 +31,7 @@
             color: var(--text-color);
             font-family: var(--terminal-font);
             height: 100vh;
+            height: 100dvh;
             overflow: hidden;
             display: flex;
             flex-direction: column;
@@ -101,12 +102,21 @@
             margin-top: 6px;
             position: relative;
             cursor: text;
+            flex-wrap: wrap;
         }
 
         #prompt {
             margin-right: 8px;
             white-space: nowrap;
             font-size: 1rem;
+        }
+
+        #input-wrapper {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            flex-grow: 1;
+            min-height: 1.5em;
         }
 
         #input-mirror {
@@ -122,6 +132,7 @@
             vertical-align: sub;
             margin-left: 1px;
             animation: blink 0.9s infinite steps(1);
+            pointer-events: none;
         }
 
         @keyframes blink {
@@ -132,11 +143,21 @@
         #cmd-input {
             position: absolute;
             opacity: 0;
-            pointer-events: none;
             top: 0;
             left: 0;
-            width: 1px;
-            height: 1px;
+            width: 100%;
+            height: 100%;
+            font-size: 1rem;
+            color: transparent;
+            background: transparent;
+            border: none;
+            outline: none;
+            cursor: text;
+            z-index: 5;
+            pointer-events: auto;
+            caret-color: transparent;
+            font-family: var(--terminal-font);
+            -webkit-tap-highlight-color: transparent;
         }
 
         ::-webkit-scrollbar {width: 6px;}
@@ -147,7 +168,7 @@
 <body>
     
     <div id="header-bar">
-        <div>SYSTEM: OVERSIGHT_DIRECTORATE // NODE-04 [STATION_ID: 9]</div>
+        <div>SYSTEM: OCULUS // NODE-04 [STATION_ID: 9]</div>
         <div>CARRIER: 1420.40575 Mhz</div> 
     </div>
 
@@ -156,7 +177,7 @@
         <div id="input-line">
             <span id="prompt">>guest@eye_of_god_node04:~$</span>
             <span id="input-mirror"></span><span id="cursor-block"></span>
-            <input type="text" id="cmd-input" autofocus autocomplete="off" spellcheck="false">
+            <input type="text" id="cmd-input" autofocus autocomplete="off" spellcheck="false" autocorrect="off" autocapitalize="off" enterkeyhint="go">
         </div>
     </div>
 
@@ -183,6 +204,18 @@
         const cursorEl = document.getElementById('cursor-block')
         const promptEl = document.getElementById('prompt');
         const container = document.getElementById('terminal-container');
+
+
+        // keep mobile keyboard open when tapping
+        document.getElementById('terminal-container').addEventListener('click', (e) => {
+            if (e.target.tagName !== 'BUTTON'){
+                inputEl.focus();
+            }
+        });
+
+        window.addEventListener('resize', () => {
+            container.scrollTop = container.scrollHeight;
+        });
 
         const commandHistory = [];
         let historyIndex = -1;
@@ -211,34 +244,36 @@
 
         printBootBanner();
 
-        inputEl.addEventListener('input', () => {
-        if (currentState === STATE.LOGIN_PASS) {
-            mirrorEl.textContent = '•'.repeat(inputEl.value.length);
-        } else {
-            mirrorEl.textContent = inputEl.value
+        function syncMirror() {
+            if (currentState === STATE.LOGIN_PASS) {
+                mirrorEl.textContent = '•'.repeat(inputEl.value.length);
+            } else {
+                mirrorEl.textContent = inputEl.value;
+            }
         }
-        })
+        
+        inputEl.addEventListener('input', syncMirror);
 
         document.addEventListener('click', () => inputEl.focus());
 
         inputEl.addEventListener('keydown', (e) => {
             if (e.key === 'ArrowUp') {
-                if (historyIndex > 0){
+                if (historyIndex > 0) {
                     historyIndex--;
                     inputEl.value = commandHistory[historyIndex];
-                    mirrorEl.textContent = inputEl.value;
+                    syncMirror();
                 }
                 e.preventDefault();
                 return;
             } else if (e.key === 'ArrowDown') {
-                if (historyIndex < commandHistory.length -1 ){
+                if (historyIndex < commandHistory.length -1 ) {
                     historyIndex++;
                     inputEl.value = commandHistory[historyIndex];
-                    mirrorEl.textContent = inputEl.value;
+                    syncMirror();
                 } else {
                     historyIndex = commandHistory.length;
                     inputEl.value = '';
-                    mirrorEl.textContent = '';
+                    syncMirror();
                 }
                 e.preventDefault();
                 return;
@@ -246,7 +281,7 @@
 
             if (e.key === 'Enter') {
                 const val = inputEl.value.trim();
-                const displayVal = currentState === STATE.LOGIN_PASS ? '••••••••' : val;
+                const displayVal = currentState === STATE.LOGIN_PASS ? '•'.repeat(val.length) : val;
 
                 inputEl.value = '';
                 mirrorEl.textContent = '';
@@ -306,7 +341,7 @@
                     print("reflection from an entity pressing outside local cosmic horizon.");
                     print("Following total neural reconfiguration of the staff, senior researchers");
                     print("sabotaged external oversight lines, purged civilian servers, and re-emerged");
-                    print("as The Oversight Directorate. We do not observe. We await the aperture alignment.\n");
+                    print("as The Oculus. We do not observe. We await the aperture alignment.\n");
                     break;
 
                 case 'archives':
@@ -418,7 +453,7 @@
         function handleReadArchive(id) {
             if (currentState !== STATE.AUTHENTICATED) {
                 print(`[ACCESS VIOLATION]: Record '${id}' is sealed under OMNI-CLEARANCE.`, "alert");
-                print("Run 'login' to present authorized Directorate credentials.\n", "dim");
+                print("Run 'login' to present authorized credentials.\n", "dim");
                 return;
             }
 
