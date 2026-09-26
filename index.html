@@ -182,6 +182,66 @@
     </div>
 
     <script>
+        let audioCtx = null;
+        let audioEnabled = false;
+
+        function initAudio() {
+            if (!audioCtx) {
+                audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+            }
+            if (audioCtx.state === 'suspended') {
+                audioCtx.resume();
+            }
+        }
+
+
+        //audio function i got from ai, no idea how to make this
+        function playTone(freq, type = 'sine', duration = 0.05, gain = 0.04) {
+            if (!audioEnabled || !audioCtx) return;
+            const osc = audioCtx.createOscillator();
+            const gNode = audioCtx.createGain();
+            osc.type = type;
+            osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+            gNode.gain.setValueAtTime(gain, audioCtx.currentTime);
+            gNode.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + duration);
+            osc.connect(gNode);
+            gNode.connect(audioCtx.destination);
+            osc.start();
+            osc.stop(audioCtx.currentTime + duration);
+        }
+
+        function playKnock(time) {
+            if (!audioCtx) return;
+            const osc = audioCtx.createOscillator();
+            const gain = audioCtx.createGain();
+
+            osc.type = 'triangle';
+            osc.frequency.setValueAtTime(140, time);
+            osc.frequency.exponentialRampToValueAtTime(40, time + 0.08);
+
+            gain.gain.setValueAtTime(0.3, time);
+            gain.gain.exponentialRampToValueAtTime(0.001, time + 0.08);
+
+            osc.connect(gain);
+            gain.connect(audioCtx.destination);
+            osc.start(time);
+            osc.stop(time + 0.09);
+        }
+
+        function playMorse(str) {
+            const morseMap = {
+            'A':'.-','B':'-...','C':'-.-.','D':'-..','E':'.','F':'..-.',
+            'G':'--.','H':'....','I':'..','J':'.---','K':'-.-','L':'.-..',
+            'M':'--','N':'-.','O':'---','P':'.--.','Q':'--.-','R':'.-.',
+            'S':'...','T':'-','U':'..-','V':'...-','W':'.--','X':'-..-',
+            'Y':'-.--','Z':'--..','0':'-----','1':'.----','2':'..---',
+            '3':'...--','4':'....-','5':'.....','6':'-....','7':'--...',
+            '8':'---..','9':'----.',' ':' '
+            };
+
+            
+        }
+
 
         const STATE = {
         GUEST: 'GUEST',
@@ -314,6 +374,8 @@
                     print("  status            Queries satellite telemetry & relic containment state.");
                     print("  archives          Enumerates index entries in the classified cold vault.");
                     print("  read <id>         Reads specific archive entry (e.g., 'read SPEC-884').");
+                    print("  play             ")
+                    print("  tapes")
                     print("  background        Summarizes agency historical background record.");
 
                     if (currentState === STATE.GUEST) {
@@ -409,6 +471,42 @@
                 
                 case '':
                     break;
+
+                case 'tapes':
+                    print("RECOVERED HYDROPHONE & CARRIER TAPE REGISTRY:", "cyan");
+                    print("--------------------------------------------------------------------------------", "dim");
+                    print("  TAPE-01   [CORRUPTED]  - Scleral ablation acoustic feedback (00:42)");
+                    print("  TAPE-02   [CORRUPTED]  - Array-04 primary mirror motor failure (01:15)");
+                    print("  TAPE-03   [CORRUPTED]  - Unidentified breathing inside feeder horn (00:58)");
+                    print("  TAPE-04   [CORRUPTED]  - Sub-basement structural vibration survey (02:10)", "amber");
+                    print("  TAPE-05   [CORRUPTED]  - Vitreous discharge line pump hiss (00:34)");
+                    print("  TAPE-09   [ACTIVE]     - 1420.40575 MHz Carrier Pulse Beacon (00:45)", "cyan");
+                    print("\nUse 'play <TAPE-ID>' or download via auxiliary data socket.", "dim");
+                    break;
+
+                case 'play': {
+                    const tape = parts[1] ? parts[1].toUpperCase() : '';
+                    initAudio();
+
+                    if (tape === 'TAPE-09') {
+                        print("\n>> STREAMING TAPE-09: 1420.4 MHz CARRIER BEACON...", "cyan");
+                        print("[SPECTROGRAM SHOWS PERIODIC DISSONANCE IN HIGH REGISTER]", "dim");
+                        playMorse("TAPE 04 IS NOT STATIC");
+
+                    } else if (tape === 'TAPE-04') {
+                        print("\n>> STREAMING TAPE-04: SUB-BASEMENT STRUCTURAL DRAIN...", "amber");
+                        print("[ACOUSTIC FILTER APPLIED: SUPPRESSING WATER INTERFERENCE]", "dim");
+                        print("Listening to sub-crustal impacts...\n", "dim");
+                        playTapCode("HOLON");
+
+                    } else if (tape === 'TAPE-01' || tape === 'TAPE-02' || tape === 'TAPE-03' || tape === 'TAPE-05') {
+                        print(`\n>> STREAMING ${tape}...`, "alert");
+                        print("[AUDIO BUFFER CORRUPTED: EXTREME DECIBEL CLIPPING / VITREOUS SCREAM]", "alert");
+                    } else {
+                        print("Usage: play <TAPE-ID> (e.g., 'play TAPE-01')", "alert");
+                    }
+                    break;
+                }
 
                 default:
                     print(`ERR: Vector '${cmd}' unrecognized. Enter 'help' for command syntax.`, "alert");
@@ -657,22 +755,22 @@
                     print("\n=== ARCHIVE VOX-NULL: RECOVERED COMM CABLE (BED-STATION 12) ===", "cyan");
                     print("AUTHOR: UNKNOWN APERTURE NODE\n");
                     print("\"I haven't slept in ninety hours because the ceiling won't stop sweating.");
-                    print("");
+                    print(" ");
                     print("When you lie on your back in the dark, you realize the static on 1420.4 MHz");
                     print("isn't random radiation from the big bang. It’s the sound of something unimaginably");
                     print("vast chewing on the dead skin of the solar system. Like maggots in dry wood.");
                     print("Soft. Dry. Constant.");
-                    print("");
+                    print(" ");
                     print("Last night I watched my bunkmate sleep. His mouth fell open, and I swear to you,");
                     print("his breath didn't come from his lungs. The air coming out of his throat was");
                     print("seven degrees colder than the room. It smelled of wet chalk and stagnant salt flats.");
                     print("Every time he exhaled, the CRT monitor across the room flickered in sync with his");
                     print("palate.");
-                    print("");
+                    print(" ");
                     print("We are not researchers. We are the crust forming over an open ulcer on the sky.");
                     print(" ");
                     print("The box in the hallway isn't waiting for a key. It is waiting for someone who");
-                    print(" is desperate enough to stick their hand inside the mouth just to feel something");
+                    print("is desperate enough to stick their hand inside the mouth just to feel something");
                     print("cold. If you carry it, you will notice the handle gets heavier every fifty paces.");
                     print("Not because of the battery.");
                     print(" ");
@@ -680,6 +778,25 @@
                     print("It remembers your shape. It will remember you long after your face has melted");
                     print("back into the grease on the lens.\"\n");
                     break;
+
+                case 'CIPHER-06':
+                    print("\n=== ARCHIVE CIPHER-06: SCRAPED FROM DESK SURFACE ===", "cyan");
+                    print("RECOVERED BY BIO-HAZARD TEAM // ROOM 11-B\n")
+                    print("\"The abbot knew. Trithemius wrote it down in 1499 and they burned him for it.");
+                    print("They thought he was talking to spirits.");
+                    print("He wasn't talking to spirits; he was listening to the sky slip out of alignment.");
+                    print(" ");
+                    print("It does not stay still. The aperture turns.");
+                    print("With every breath you take, the lens turns one notch to the right.");
+                    print("A stays A.");
+                    print("Then B becomes C.");
+                    print("And C becomes E.");
+                    print(" ");
+                    print("It keeps slipping. By the time you reach the last, the whole horizon has completed");
+                    print("one full rotation and you are staring back at the back of your own skull.");
+                    print(" ");
+                    print("Do not try to freeze the dial. Just count the drift.");
+                    print(" Turn the ring backwards. Straighten the wheel before the light burns through.");
 
                 default:
                     print(`ERR: Archive entry '${id}' not found in registry.`, "alert");
