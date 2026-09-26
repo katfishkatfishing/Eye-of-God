@@ -228,6 +228,35 @@
             osc.stop(time + 0.09);
         }
 
+        function playTapCode(word) {
+            const tapGrid = {
+                'A':[1,1],'B':[1,2],'C':[1,3],'D':[1,4],'E':[1,5],
+                'F':[2,1],'G':[2,2],'H':[2,3],'I':[2,4],'J':[2,5],
+                'L':[3,1],'M':[3,2],'N':[3,3],'O':[3,4],'P':[3,5],
+                'Q':[4,1],'R':[4,2],'S':[4,3],'T':[4,4],'U':[4,5],
+                'V':[5,1],'W':[5,2],'X':[5,3],'Y':[5,4],'Z':[5,5],'K':[1,3]
+            };
+
+            let now = audioCtx.currentTime + 0.5;
+            for (let char of word.toUpperCase()) {
+                const coords = tapGrid[char];
+                if (!coords) continue;
+                
+                for (let i = 0; i < coords[0]; i++) {
+                    playKnock(now);
+                    now += 0.25;
+                }
+                now += 0.6;
+
+                for (let i = 0; i < coords[1]; i++) {
+                    playKnock(now);
+                    now += 0.25;
+                }
+                now += 1.4;
+            }
+        }
+
+        //morse
         function playMorse(str) {
             const morseMap = {
             'A':'.-','B':'-...','C':'-.-.','D':'-..','E':'.','F':'..-.',
@@ -239,7 +268,33 @@
             '8':'---..','9':'----.',' ':' '
             };
 
-            
+            const dot = 0.07;
+            let now = audioCtx.currentTime + 0.3;
+
+            for (let ch of str.toUpperCase()) {
+                const code = morseMap[ch];
+                if (!code) continue;
+                if (code === ' ') {
+                    now += dot * 6;
+                    continue;
+                }
+                for (let symbol of code) {
+                    const osc = audioCtx.createOscillator();
+                    const gain = audioCtx.createGain();
+                    osc.type = 'sine';
+                    osc.frequency.setValueAtTime(1420, now); //1420hz
+
+                    const dur = symbol === '.' ? dot : dot * 3;
+                    gain.gain.setValueAtTime(0.08, now);
+                    gain.gain.setValueAtTime(0, now + dur);
+
+                    osc.connect(gain);
+                    gain.connect(audioCtx.destination);
+                    osc.start(now + dur);
+                    now += dur + dot;
+                }
+                now += dot * 3;
+            }
         }
 
 
@@ -289,18 +344,20 @@
         }
 
         function printBootBanner() {
-            print("[SYSTEM BIOS: KERNEL v9.0.4-CLASSIFIED]", "dim");
-        print("[HOST: ORBITAL-NODE-04 // SUBNET: BLACK-VAULT]", "dim");
-        print("[SECURITY LEVEL: OVERSIGHT RESTRICTED // READ-ONLY SOCKET]", "dim");
-        print("");
-        print("********************************************************************************", "amber");
-        print("NOTICE: YOU ARE CONNECTED TO AN UNVERIFIED GUEST INTERFACE.", "amber");
-        print("LOCAL DOMAIN: PROTOCOL: EYE_OF_GOD // SENSOR TELEMETRY TERMINAL.", "amber");
-        print("ALL VECTORS MONITORED. VITREOUS IRRADIATION PROTOCOLS ACTIVE.", "amber");
-        print("********************************************************************************", "amber");
-        print("");
-        print("Type 'help' for authorized commands.\n");
-        }
+            print("[SYSTEM BIOS: KERNEL v9.0.4-SALVAGED]", "dim");
+            print("[HOST: IDE-0 // KHALLENGHAR MIRROR ARCHIVE]", "dim");
+            print("[SECURITY LEVEL: OVERSIGHT RESTRICTED // READ-ONLY SOCKET]", "dim");
+            print("HARDWARE PARITY: UNSTABLE // CORROSION DETECTED");
+            print(" ");
+            print("********************************************************************************", "amber");
+            print("NOTICE: YOU ARE CONNECTED TO AN UNVERIFIED GUEST INTERFACE.", "amber");
+            print("LOCAL DOMAIN: PROTOCOL: EYE_OF_GOD // SENSOR TELEMETRY TERMINAL.", "amber");
+            print("\"To Be Witnessed Is To Be Refined.\"", "amber");
+            print("STATION STATUS: DISPERSED // LOCAL BEACON RUNNING ON RESIDUAL FLUX.", "amber");
+            print("********************************************************************************", "amber");
+            print(" ");
+            print("Type 'help' for authorized commands.\n");
+            }
 
         printBootBanner();
 
@@ -374,8 +431,9 @@
                     print("  status            Queries satellite telemetry & relic containment state.");
                     print("  archives          Enumerates index entries in the classified cold vault.");
                     print("  read <id>         Reads specific archive entry (e.g., 'read SPEC-884').");
-                    print("  play             ")
-                    print("  tapes")
+                    print("  tapes             Lists hydrophone & deep space carrier audio captures.");
+                    print("  play <tape-id>    Streams recovered acoustic signal into audio pipeline.");
+                    print("  telemetry         Pulls active burst transmission on 1420.4 MHz.");
                     print("  background        Summarizes agency historical background record.");
 
                     if (currentState === STATE.GUEST) {
@@ -391,8 +449,21 @@
                     print("SYSTEM STATUS: STANDBY // RUNNING ON AUXILIARY OPTIC CELLS", "cyan");
                     print("CARRIER HARMONIC: 1420.40575 MHz [CONTINUOUS PULSE DETECTED]");
                     print("ALIGNMENT PHASE : 4.12s ABERRATION // VITREOUS INVERSION CYCLE ENGAGED");
-                    print("RELIC DEADBOLT  : ENGAGED // SPATIAL DISSONANCE LOCK ACTIVE");
+                    print("RELIC DEADBOLT  : [OFFLINE // CONNECTION TO SERVER UNSUCCESSFUL]", "alert");
                     print("PHYSICAL UNIT   : GROUND UNIT 07 DEPLOYED TO LOCAL SECTOR", "amber");
+                    break;
+
+                case 'telemetry':
+                    if (currentState !== STATE.AUTHENTICATED) {
+                        print("[DENIED]: Real-time carrier feed restricted to APERTURE personnel.", "alert");
+                        return;
+                    }
+                    print("\n[CARRIER 140.40575 MHz // RAW BUFFER DUMP]", "cyan");
+                    print("RECORD IDENTIFIER: BURST-88");
+                    print("TIMESTAMP     : 14-MAR-2004 // 03:14:02 UTC");
+                    print("STREAM        : 2 7 5 3 3   2 3 6 1 6   2 3 7 1 3   1 1 7 1 7   2 3 6", "amber");
+                    print("KEYWORD REF   : [MAPPING TIED TO SUB-BASEMENT STRUCTURAL ANCHOR]");
+                    print("NOTE          : Frame frozen at moment of Station 07 halon discharge.\n", "dim");
                     break;
 
                 case 'background':
@@ -413,26 +484,24 @@
                     if (currentState === STATE.GUEST) {
                         print("  [1] MED-1998    [RESTRICTED] - Post-Mortem Debrief & The Shunt Protocol");
                         print("  [2] LOG-0041    [RESTRICTED] - Acoustic Telemetry & Vitreous Decay Report");
-                        print("  [3] VEC-FINAL   [RESTRICTED] - Ground Containment Spatial Coordinates");
-                        print("  [4] SEC-0012    [RESTRICTED] - Station 03 Calibration Note (Disputed)");
-                        print("  [5] SURG-04     [RESTRICTED] - Audio Surveillance Intercept (Bay 3 Incident)");
-                        print("  [6] CIPHER-09   [RESTRICTED] - Retinal Script / 26-Node Refraction Matrix");
-                        print("  [7] DIR-FINAL   [RESTRICTED] - Urgent Field Dispatch to Cold Assets");
-                        print("  [8] BIO-009     [RESTRICTED] - Tissue Pathology & Crystalline Vitreous Report");
-                        print("  [9] SPEC-884    [RESTRICTED] - Hardware Chassis & Spatial Dissonance Lock");
-                        print(" [10] VOX-NULL    [RESTRICTED] - Bed-Station 12 Telemetry Degradation");
+                        print("  [3] SEC-0012    [RESTRICTED] - Station 03 Calibration Note (Disputed)");
+                        print("  [4] SURG-04     [RESTRICTED] - Audio Surveillance Intercept (Bay 3 Incident)");
+                        print("  [5] DIR-FINAL   [RESTRICTED] - Urgent Field Dispatch to Cold Assets");
+                        print("  [6] BIO-009     [RESTRICTED] - Tissue Pathology & Crystalline Vitreous Report");
+                        print("  [7] SPEC-884    [RESTRICTED] - Hardware Chassis & Spatial Dissonance Lock");
+                        print("  [8] VOX-NULL    [RESTRICTED] - Bed-Station 12 Telemetry Degradation");
+                        print("  [9] PURGE-04    [RESTRICTED] - Automatic Decontamination Directive");
                         print("\n[ERR]: Authentication missing. Use 'login' to elevate clearance.", "alert");
                     } else {
                         print("  [1] MED-1998    [DECRYPTED]  - Dr. Rostova Deposition // Planetary Shunt Theory", "amber");
                         print("  [2] LOG-0041    [DECRYPTED]  - Dr. Aris Thorne Witness Deposition", "amber");
-                        print("  [3] VEC-FINAL   [DECRYPTED]  - Ground Null-Vector (Geofence Lock)", "amber");
-                        print("  [4] SEC-0012    [DECRYPTED]  - Station 03 High-Pass Filter & Clockwise Grid Note", "amber");
-                        print("  [5] SURG-04     [DECRYPTED]  - Operative Carter Cornea Resection", "amber");
-                        print("  [6] CIPHER-09   [DECRYPTED]  - Retinal Script Translation Grid", "amber");
-                        print("  [7] DIR-FINAL   [DECRYPTED]  - Cold Asset Orders // Null-Vector & Mantle Drift", "amber");
-                        print("  [8] BIO-009     [DECRYPTED]  - Autopsy of Aperture-02 (Dr. Lin)", "amber");
-                        print("  [9] SPEC-884    [DECRYPTED]  - Hardware Chassis Specification", "amber");
-                        print(" [10] VOX-NULL    [DECRYPTED]  - Bed-Station Ambient Static Analysis", "amber");
+                        print("  [3] SEC-0012    [DECRYPTED]  - Station 03 High-Pass Filter & Clockwise Grid Note", "amber");
+                        print("  [4] SURG-04     [DECRYPTED]  - Operative Carter Cornea Resection", "amber");
+                        print("  [5] DIR-FINAL   [DECRYPTED]  - Cold Asset Orders // Null-Vector & Mantle Drift", "amber");
+                        print("  [6] BIO-009     [DECRYPTED]  - Autopsy of Aperture-02 (Dr. Lin)", "amber");
+                        print("  [7] SPEC-884    [DECRYPTED]  - Hardware Chassis Specification", "amber");
+                        print("  [8] VOX-NULL    [DECRYPTED]  - Bed-Station Ambient Static Analysis", "amber");
+                        print("  [9] PURGE-04    [DECRYPTED]  - Pi-Day Emergency Halon Execution Log", "amber");
                         print("\nUse 'read <ID>' to view payload data.", "dim");
                     }
                     break;
@@ -478,7 +547,7 @@
                     print("  TAPE-01   [CORRUPTED]  - Scleral ablation acoustic feedback (00:42)");
                     print("  TAPE-02   [CORRUPTED]  - Array-04 primary mirror motor failure (01:15)");
                     print("  TAPE-03   [CORRUPTED]  - Unidentified breathing inside feeder horn (00:58)");
-                    print("  TAPE-04   [CORRUPTED]  - Sub-basement structural vibration survey (02:10)", "amber");
+                    print("  TAPE-04   [FILTERED]   - Sub-basement structural vibration survey (02:10)", "amber");
                     print("  TAPE-05   [CORRUPTED]  - Vitreous discharge line pump hiss (00:34)");
                     print("  TAPE-09   [ACTIVE]     - 1420.40575 MHz Carrier Pulse Beacon (00:45)", "cyan");
                     print("\nUse 'play <TAPE-ID>' or download via auxiliary data socket.", "dim");
@@ -497,7 +566,7 @@
                         print("\n>> STREAMING TAPE-04: SUB-BASEMENT STRUCTURAL DRAIN...", "amber");
                         print("[ACOUSTIC FILTER APPLIED: SUPPRESSING WATER INTERFERENCE]", "dim");
                         print("Listening to sub-crustal impacts...\n", "dim");
-                        playTapCode("HOLON");
+                        playTapCode("TELESCOPE");
 
                     } else if (tape === 'TAPE-01' || tape === 'TAPE-02' || tape === 'TAPE-03' || tape === 'TAPE-05') {
                         print(`\n>> STREAMING ${tape}...`, "alert");
@@ -577,6 +646,8 @@
                 case 'VEC-FINAL':
                     print("\n=== ARCHIVE VEC-FINAL: SPATIAL ALIGNMENT VECTOR ===", "cyan");
                     print("ORIGIN: UNKNOWN APERTURE NODE\n");
+                    print("TARGET VECTOR: [ LBVIS Z XAEX ]");
+                    print("DECRYPTION KEY: ?????????? ?????");
                     print("\"It will not open for coordinates on paper. Numbers are just dirt.");
                     print("It only breathes when it sits in the intersection where the line from");
                     print("the old observatory crosses the iron benchmark.");
@@ -593,19 +664,15 @@
                     print("RECOVERED BY BIO-HAZARD TEAM // ROOM 11-B\n");
                     print("\"They are not letters. Why do you call them letters?");
                     print("Letters are dead sticks.");
-                    print("");
+                    print(" ");
                     print("Look at the corner where the ceiling meets the door. That is not an 'L'.");
                     print("That is an intake port. When light strikes at thirty-four degrees, the square");
                     print("splits into four chambers.");
-                    print("");
-                    print("    |   |           | # |           |   | #");
-                    print("  --+---+--       --+---+--       --+---+--");
-                    print("    | # |           |   |           | # |  ");
-                    print("");
+                    print(" ");
                     print("The first notch is where the eye enters. The second is where it turns white.");
                     print("Count across the grid: five wide, five deep. If you find the letter 'J', cut it out.");
                     print("The Observer has no throat for 'J'. It drops straight from I to K.");
-                    print("");
+                    print(" ");
                     print("You think you are solving words. You are just tracing the fractures in your");
                     print("own cornea. When you read it, your optic nerve pulls tighter. Can you feel");
                     print("it behind your ears yet? It’s pulling. It’s pulling.\"\n");
@@ -628,7 +695,7 @@
                     print("             rim. He kept muttering the fifth column... 'always skip the fifth,");
                     print("             the pupil doesn't see its own eyelid'...\"");
                     print("03:16:12 - [Acoustic feedback. A heavy breath directly into the diaphragm.]");
-                    print("03:16:20 - \"Do not look at page seventy-four. The print is raised. The letters");
+                    print("03:16:20 - \"Do not look at [DISTORTED]. The print is raised. The letters");
                     print("             are breathing through the ink.\"\n");
                     break;
                 
@@ -797,6 +864,33 @@
                     print(" ");
                     print("Do not try to freeze the dial. Just count the drift.");
                     print(" Turn the ring backwards. Straighten the wheel before the light burns through.");
+
+                case 'PURGE-04':
+                    print("\n=== ARCHIVE PURGE-04: DECONTAMINATION AUDIT ===", "cyan");
+                    print("INCIDENT TIMESTAMP: 14-MAR-2004 // 03:18:44 UTC");
+                    print("AUTOMATED HALON AND FIREWALL SHUTDOWN EXECUTED.\n");
+                    print("\"Aperture focus breached during solar transit. Chief Engineer Chen deceased.");
+                    print("Physical tissues in Bay 3 underwent complete crystalline transition.");
+                    print("Facility mainframe zeroed under standing containment doctrine.");
+                    print("All operational physical assets decommissioned with the exception of");
+                    print("Ground Unit 07, unaccounted for in departure quadrant.");
+                    print("One biological signature traced exiting through the gravel access road.");
+                    print("Do not pursue. The subject has less than thirty percent organic cornea remaining.");
+                    print("The cold horizon will finish the work.\"\n");
+                    break;
+
+                case 'SEC-0012':
+                    print("\n=== ARCHIVE SEC-0012: CALIBRATION NOTE (STATION 03) ===", "cyan");
+                    print("[RECOVERED INCINERATOR FRAGMENT // FIELD CALIBRATION]\n");
+                    print("\"The burst on the carrier isn't pure Morse. It's a numerical telemetry train.");
+                    print("Nine digits. Nine dibits.");
+                    print("Standard tri-state radio framing applies (..  .-  .x  -.  --  -x  x.  x-  xx).");
+                    print("Whoever holds the grounding box: you cannot guess the column permutation.");
+                    print("Chen anchored the alphabetical index to the receiver in the drain.");
+                    print("Look at the tapes.\"\n");
+                    break;
+
+                case
 
                 default:
                     print(`ERR: Archive entry '${id}' not found in registry.`, "alert");
