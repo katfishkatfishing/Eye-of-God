@@ -2,7 +2,7 @@
 
 My hands are soft. The is the first thing that made me vomit.
 
-For nine years, my knuckles had the density of glazed porcelain. When I struck the metal workbench in Bay 3, it made the clean chime of porcelain striking cold iron. Now they yield. I pressed my right index finger against the streering wheel of the station wagon until the nail went white, and I felt meat. Pliable, sickening meat.
+For nine years, my knuckles had the density of glazed porcelain. When I struck the metal workbench in Bay 3, it made the clean chime of porcelain striking cold iron. Now, they are feeble. I pressed my right index finger against the streering wheel of the station wagon until the nail went white, and I felt meat. Pliable, sickening meat.
 
 The station is gone.
 

@@ -15,7 +15,7 @@ What did he see? His eyes are clear. Too clear. Cornea untouched. The light pass
 
 I had to cover the blotter with my grade ledger before he asked.
 
-My chest has that dry, scraping weight again. Like someone emptied an ashtray behind my ribs. The valve isn't pumping blood, it's dragging across grit. Chen had twenty-two days after the clicking started in his sternum. I counted my own pulse against the mantle clock tonight. Sixty one beats, but between the fortieth and the forty first, there is no sound. Just the vacuum. The perihelion.
+My chest has that dry, scraping weight again. Like someone emptied an ashtray behind my ribs. The valve isn't pumping blood, it's dragging across grit. Chen had twenty-two days after the clicking started in his sternum. I counted my own pulse against the mantel clock tonight. Sixty one beats, but between the fortieth and the forty first, there is no sound. Just the vacuum. The perihelion.
 
 The closest approach. That was what Chen always called the fourth phase. 'You must greet the fire at its nearest swing or the shutter stays frozen.' 
 
@@ -29,7 +29,7 @@ Zero functional receptors. He is wrong.
 
 The right one still registers the cold. If the circuit board wakes, it won't ask for a name. The machine only recognizes the pupil that stayed open when the roof came down.
 
-Aperture three. Nearest to the sun. It only breathes when the count is zero. 
+Aperture-3. Nearest to the sun. It only breathes when the count is zero. 
 
 Everything is crowded. 
 
