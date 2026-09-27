@@ -481,30 +481,32 @@
                     break;
 
                 case 'archives':
-                    print("CLASSIFIED VAULT MANIFEST (STATION 04):", "cyan");
+                    print("CLASSIFIED VAULT MANIFEST (RESTRICTED PARTITION):", "cyan");
                     print("--------------------------------------------------------------------------------", "dim");
                     
                     if (currentState === STATE.GUEST) {
-                        print("  [1] MED-1998    [RESTRICTED] - Post-Mortem Debrief & The Shunt Protocol");
-                        print("  [2] LOG-0041    [RESTRICTED] - Acoustic Telemetry & Vitreous Decay Report");
-                        print("  [3] SEC-0012    [RESTRICTED] - Station 03 Calibration Note (Disputed)");
-                        print("  [4] SURG-04     [RESTRICTED] - Audio Surveillance Intercept (Bay 3 Incident)");
-                        print("  [5] DIR-FINAL   [RESTRICTED] - Urgent Field Dispatch to Cold Assets");
-                        print("  [6] BIO-009     [RESTRICTED] - Tissue Pathology & Crystalline Vitreous Report");
-                        print("  [7] SPEC-884    [RESTRICTED] - Hardware Chassis & Spatial Dissonance Lock");
-                        print("  [8] VOX-NULL    [RESTRICTED] - Bed-Station 12 Telemetry Degradation");
-                        print("  [9] PURGE-04    [RESTRICTED] - Automatic Decontamination Directive");
+                        print("  [1] MED-001     [RESTRICTED] - Longitudinal Pathology // Cohort Surveillance");
+                        print("  [2] MED-002     [RESTRICTED] - Post-Mortem Debrief & The Shunt Protocol");
+                        print("  [3] LOG-0041    [RESTRICTED] - Acoustic Telemetry & Vitreous Decay Report");
+                        print("  [4] SEC-0012    [RESTRICTED] - Station 03 Calibration Note (Disputed)");
+                        print("  [5] SURG-04     [RESTRICTED] - Audio Surveillance Intercept (Bay 3 Incident)");
+                        print("  [6] DIR-FINAL   [RESTRICTED] - Urgent Field Dispatch to Cold Assets");
+                        print("  [7] BIO-02      [RESTRICTED] - Tissue Pathology & Crystalline Vitreous Report");
+                        print("  [8] SPEC-884    [RESTRICTED] - Hardware Chassis & Spatial Dissonance Lock");
+                        print("  [9] VOX-NULL    [RESTRICTED] - Bed-Station 12 Telemetry Degradation");
+                        print(" [10] PURGE-04    [RESTRICTED] - Automatic Decontamination Directive");
                         print("\n[ERR]: Authentication missing. Use 'login' to elevate clearance.", "alert");
                     } else {
-                        print("  [1] MED-1998    [DECRYPTED]  - Dr. Rosalind Deposition // Planetary Shunt Theory", "amber");
-                        print("  [2] LOG-0041    [DECRYPTED]  - Dr. Katherine Franklin Witness Deposition", "amber");
-                        print("  [3] SEC-0012    [DECRYPTED]  - Station 03 High-Pass Filter & Clockwise Grid Note", "amber");
-                        print("  [4] SURG-04     [DECRYPTED]  - Operative Carter Cornea Resection", "amber");
-                        print("  [5] DIR-FINAL   [DECRYPTED]  - Cold Asset Orders // Null-Vector & Mantle Drift", "amber");
-                        print("  [6] BIO-009     [DECRYPTED]  - Autopsy of Aperture-02 (Dr. Lin)", "amber");
-                        print("  [7] SPEC-884    [DECRYPTED]  - Hardware Chassis Specification", "amber");
-                        print("  [8] VOX-NULL    [DECRYPTED]  - Bed-Station Ambient Static Analysis", "amber");
-                        print("  [9] PURGE-04    [DECRYPTED]  - Pi-Day Emergency Halon Execution Log", "amber");
+                        print("  [1] MED-001     [DECRYPTED]  - Logitudinal Pathology // Aperture Cohort", "amber");
+                        print("  [2] MED-002     [DECRYPTED]  - Dr. Katherine Deposition // Planetary Shunt Theory", "amber");
+                        print("  [3] LOG-0041    [DECRYPTED]  - Dr. Wilhelmina Kovacs Witness Deposition", "amber");
+                        print("  [4] SEC-0012    [DECRYPTED]  - Station 03 High-Pass Filter & Clockwise Grid Note", "amber");
+                        print("  [5] SURG-04     [DECRYPTED]  - Operative Carter Cornea Resection", "amber");
+                        print("  [6] DIR-FINAL   [DECRYPTED]  - Cold Asset Orders // Null-Vector & Mantle Drift", "amber");
+                        print("  [7] BIO-02      [DECRYPTED]  - Autopsy of Aperture-02 (Dr. Lin)", "amber");
+                        print("  [8] SPEC-884    [DECRYPTED]  - Hardware Chassis Specification", "amber");
+                        print("  [9] VOX-NULL    [DECRYPTED]  - Bed-Station Ambient Static Analysis", "amber");
+                        print(" [10]] PURGE-04   [DECRYPTED]  - Pi-Day Emergency Halon Execution Log", "amber");
                         print("\nUse 'read <ID>' to view payload data.", "dim");
                     }
                     break;
@@ -693,7 +695,7 @@
                     print("             phase—just run the carrier backwards—it stops humming and starts");
                     print("             counting. Nine. Nine. Three. It doesn’t use zeroes. Why doesn't");
                     print("             it use zeroes? Because nothing is absent. Everything is crowded.\"");
-                    print("03:15:33 - \"...Kovacs took the lens out of the housing. He tried to put it");
+                    print("03:15:33 - \"...Finn took the lens out of the housing. He tried to put it");
                     print("             in his mouth so it wouldn't be lonely. His gums bled across the");
                     print("             rim. He kept muttering the fifth column... 'always skip the fifth,");
                     print("             the pupil doesn't see its own eyelid'...\"");
@@ -702,15 +704,15 @@
                     print("             are breathing through the ink.\"\n");
                     break;
                 
-                case 'MED-1998':
-                    print("\n=== ARCHIVE MED-1998: AUTOPSY & DEBRIEF (DR. ELENA ROSTOVA) ===", "cyan");
+                case 'MED-002':
+                    print("\n=== ARCHIVE MED-002: AUTOPSY & DEBRIEF (DR. KATHERINE HALL) ===", "cyan");
                     print("\"They call us butchers on the civilian frequencies. They think we stole");
                     print("Array-04 out of treason or greed.");
                     print(" ");
                     print("Let them think it. A mother does not explain to an infant why the bone");
                     print("must be set with cold iron.");
                     print(" ");
-                    print("Chen knew what was coming. When the micro-fissures formed behind his retinas,");
+                    print("Zhao knew what was coming. When the micro-fissures formed behind his retinas,");
                     print("he didn't ask for morphine; he asked for a polarizing filter so he could keep");
                     print("drawing the vector maps. His blood contained forty times the normal threshold");
                     print("of crystalline silicates. He was turning into a prism from the inside out,");
@@ -719,7 +721,7 @@
                     print("The public doesn't understand that Unit 07 is a lightning rod. It carries");
                     print("the weight so eight billion people can keep sleeping in their dark.");
                     print("The vessel must reach the null-point before the cycle peaks.");
-                    print("Chen died believing someone would finish the delivery. I have to believe that too.\"\n");
+                    print("Zhao died believing someone would finish the delivery. I have to believe that too.\"\n");
                     break;
 
                 case 'SEC-0012':
@@ -750,10 +752,10 @@
                     print("To Be Witnessed Is to Be Refined.\"\n");
                     break;
 
-                case 'BIO-009':
-                    print("\n=== ARCHIVE BIO-009: PATHOLOGY REPORT (POST-EXPOSURE TISSUE SAMPLE) ===", "cyan");
+                case 'BIO-02':
+                    print("\n=== ARCHIVE BIO-02: PATHOLOGY REPORT (POST-EXPOSURE TISSUE SAMPLE) ===", "cyan");
                     print("CASE ID: APERTURE-02 (FORMERLY DR. MARCUS LIN)");
-                    print("EXAMINING OFFICER: DR. ROSTOVA\n");
+                    print("EXAMINING OFFICER: DR. KATHERINE\n");
                     print("\"We couldn't use the standard stainless scalpel on the chest cavity.");
                     print("The blade edge kept skating across the sternum with a high, wet squeal—like");
                     print("dragging steel over quartz.");
@@ -815,7 +817,7 @@
                     print("");
                     print("CARTER: (Muffled, choking) \"It's growing through the root of the molar.");
                     print("         The wire is coming up. It wants to connect to the audio jack.");
-                    print("         Tell Rostova... tell her the fifth corner is cold. It tastes like");
+                    print("         Tell Wilhelmina... tell her the fifth corner is cold. It tastes like");
                     print("         battery foil.\"");
                     print("");
                     print("[END OF FRAGMENT // SUBJECT SEDATED VIA GAS VENT]\n");
@@ -878,7 +880,7 @@
                     print("All operational physical assets decommissioned with the exception of");
                     print("Ground Unit 07, unaccounted for in departure quadrant.");
                     print("One biological signature traced exiting through the gravel access road.");
-                    print("Do not pursue. The subject has less than thirty percent organic cornea remaining.");
+                    print("Do not pursue. The subject has less than fifty percent organic cornea remaining.");
                     print("The cold horizon will finish the work.\"\n");
                     break;
 
@@ -891,6 +893,142 @@
                     print("Whoever holds the grounding box: you cannot guess the column permutation.");
                     print("Chen anchored the alphabetical index to the receiver in the drain.");
                     print("Look at the tapes.\"\n");
+                    break;
+
+                case 'MED-001':
+                    print("\n================================================================================");
+                    print("                        THE OCULUS // HEALTH SURVEILLANCE", "cyan");
+                    print("                      DOCUMENT ID: MED-001-REV.2 (RESTRICTED)", "cyan");
+                    print("              SUBJECT: SYSTEMIC SEQUELAE OF 1420.4 MHz NEAR-FIELD PROXIMITY", "cyan");
+                    print("                   COHORT STUDY: APERTURE-01 THROUGH APERTURE-14", "cyan");
+                    print("================================================================================\n", "dim");
+                    print("AUTHORS: Dr. Katherine Hall, MD // Dr. Zhen Chen, MEng");
+                    print("DATE OF COMPILATION: November 18, 1998 (Post-Exposure Day +1522)");
+                    print("CLASSIFICATION: LEVEL-4 EYE CLEARANCE ONLY // DESTROY UPON RETINAL PURGE\n", "amber");
+                    print("--------------------------------------------------------------------------------", "dim");
+                    print("1. EXECUTIVE SUMMARY", "cyan");
+                    print("--------------------------------------------------------------------------------", "dim");
+                    print("Following the unshielded 4.12 second observation event of August 14, 1994");
+                    print("\"The White Flare\", all fourteen senior radio astronomy researchers present in the");
+                    print("Array-04 primary receiver by sustained progressive, irreversible anatomical and");
+                    print("neurological alterations.");
+                    print(" ");
+                    print("Initial civilian triage misdiagnosed these presentations as acute ionizing");
+                    print("radiation syndrome complicated by stress induced mass psychosis. This diagnosis");
+                    print("is flase. No gamma or alpha emission occured during the event.");
+                    print(" ");
+                    print("The Eye does not poison tissue. It refines it. Exposure to the coherent");
+                    print("1420.40575 MHz wavefront acts as an organizing catalyst, forcing human biologcal");
+                    print("collagen, water, and neural myelin to rearrange into rigid optical components.");
+                    print("We have designated this cascade as 'PROGRESSIVE VITREOUS INVERSION' (PVI).\n","amber");
+                    print(" ");
+                    print("ACCELERATION PRINCIPLE:", "amber");
+                    print("PVI progresses exponentially with two operational variables:");
+                    print("  1. Proximity to the primary feeder horn / near-field induction zone, (< 15 meters)");
+                    print("  2. Cumulative contact hours with active carrier bursts during alignment sweeps");
+                    print(" ");
+                    print("Operatives assigned to direct telemetry monitoring or physical chassis handling");
+                    print("exhibit up to four times the rate of crystal formation compared to operatives");
+                    print("confined to shielded logistics bunks. The Eye does not radiate passively.");
+                    print(" every direct observation cycle draws the gaze closer, accelerating the mineral");
+                    print("replacement of the observer's ocular and thoracic organs.\n");
+                    print(" ");
+                    print("--------------------------------------------------------------------------------", "dim");
+                    print("2. PROGRESSIVE PATHOLOGY (STAGES OF INVERSION)", "cyan");
+                    print("--------------------------------------------------------------------------------", "dim");
+                    print("STAGE I: THE METALLIC GUSTATORY ONSET (Days 0 to 45 / ~10 Contact hours)", "cyan");
+                    print("- All subjects reported a continuous, acrid taste described universally as");
+                    print("  \"licking wet zinc\" or \"sucking on battery foil.\"");
+                    print("- Salivary glands reduces production of amylase and mucus. Saliva becomes a clear,");
+                    print("  low-viscosity dielectric fluid with an elevated copper content (12x baseline).");
+                    print("- Dental root resorption: Molars begin loosening without gingival inflammation.");
+                    print("  Dental pulp calcifies into solid vitreous columns. Subjects compulsively tap");
+                    print("  their teeth together, claiming they can receive Morse and sub-audible carrier");
+                    print("  harmonics through the mandibular bone.");
+                    print(" ");
+                    print("STAGE II: SCLERAL OPACIFICATION & THE CALCITE RIBS (Months 2 to 18 / ~80 Contact hours)", "cyan");
+                    print("- Corneal Flattening: The normal organic curvature of the eye flattens from");
+                    print("  an average radius of 7.8mm down to 5.1mm. Subjects develop extreme peripheral");
+                    print("  astigmatism and complain that rooms appear \"pushed outward at the seams.\"");
+                    print("- The thoracic cage undergoes radical mineral substitution. Bone marrow in the");
+                    print("  ribs is displaced by hollow, hexagonal tubes of clouded calcite. As a result,");
+                    print("  the chest no longer expands symmetrically; breathing takes on a shallow,");
+                    print("  bellows-like mechanical rasp.");
+                    print("- Dr. Marcus Lin (Aperture-02) first exhibited dermal crystallization: microscopic");
+                    print("  needles of fused silica began extruding through the sweat pores of his palms");
+                    print("  and fingers. Any handling of untreated steel or copper tools leaves visible");
+                    print("  scratching on metal surfaces.");
+                    print(" ");
+                    print("STAGE III: RETINAL-OPTIC CABLE BRAIDING (Months 19 to 36 / ~250 Contact hours)")
+                    print("STAGE IV: COGNITIVE MESHING & THE FIFTH CORNER (Month 37 Onward)","cyan");
+                    print("- Complete loss of standard three dimmensional spatial orientation.");
+                    print("- Subjects can no longer process spheres, circles, or organic curves. Operative");
+                    print("  Carter attempted corneal self-excision after repeatedly stating that");
+                    print(" \"The Earth being round is a biological delusion designed to keep animals docile.\"");
+                    print("- Subjects report perceiving a fifth vertex at the intersection of room walls.");
+                    print("  Mapping of EEG telemetry indicates the brain is processing an external vector");
+                    print("  traveling into the submaxillary ganglion.");
+                    print("- Speech degrades. Vocal cords dry out and develop crystalline nodules. Spoken");
+                    print("  words become a harsh, scraping chime resembling dry porcelain tiles sliding");
+                    print("  across slate.\n");
+                    print("--------------------------------------------------------------------------------", "dim");
+                    print("3. BEHAVIORAL AND COGNITIVE ANOMALIES", "cyan");
+                    print("--------------------------------------------------------------------------------", "dim");
+                    print("A. COMPULSIVE COUNTING TICK", "amber");
+                    print("Subjects develop an obsessive focus on intervals of 1.42 seconds and multiples");
+                    print("of nine. During resting periods, subjects will tap fingertips, blink eyelids, or");
+                    print("click their tongue in synnc with the carrier frequency. When deprived of analog");
+                    print("watches or clocks, subjects track Greenwich sidereal time with an error margin of 0.002 seconds.");
+                    print(" ");
+                    print("B. SLEEP PHASE EXTINCTION & PALATAL COOLING", "ammber");
+                    print("REM sleep ceases by month 12. Subjects enter a state of motionless cataplexy");
+                    print(" lasting 3 to 4 hours per night. During this state:");
+                    print("-Body core temperature drops to 31.2°C.");
+                    print("- Exhaled breath drops significantly below ambient room temperature (measured at -4°C).");
+                    print(" ");
+                    print("C. \"BURDEN OF SIGHT\" / MARTYR COMPLEX", "amber");
+                    print("Despite excrutiating physical suffering, none of the surviving cohort have");
+                    print("expressed a desire for medical reversal. Subjects view their uncrystallized");
+                    print(" civilian past with disgust, referring to organic tissue as \"wet mud\" and");
+                    print("\"sickening\". They believe humanity's unshielded electromagnetic footprint");
+                    print(" a fatal flare that will inevitably draw the full gaze of The Cold Horizon.");
+                    print("They consider themselves structural anchors, built to bleed the sky's charge");
+                    print("into the earth before humanity is wiped.");
+                    print(" ");
+                    print("--------------------------------------------------------------------------------", "dim");
+                    print("4. COHORT ATTRITION & STATUS (AS OF NOVEMBER 1998)", "cyan");
+                    print("--------------------------------------------------------------------------------", "dim");
+                    print("- APERTURE-01 (Lucas Leong      // Oculus Director)          : ACTIVE    // Stage III");
+                    print("- APERTURE-02 (Marcus Lin       // Sub-Array Spectroscopist) : DECEASED  // Autopsied (BIO-02)");
+                    print("- APERTURE-03 (Alexander Skrail // Archival Oversight)       : ACTIVE    // Stage II");
+                    print("- APERTURE-04 (Mateo Ramos      // Mechanical Lead)          : ACTIVE    // Stage III)");
+                    print("- APERTURE-05 (Zhen Chen        // Biomechanical Lead)       : ACTIVE    // Advanced Stage III)");
+                    print("- APERTURE-06 (Katherine Hall   // Medical Sector Lead)      : ACTIVE    // Early Stage II)");
+                    print("- APERTURE-07 (Carter Smithson  // Array Technician)         : ACTIVE    // Confined (SURG-04)");
+                    print("- APERTURE-08 (Wilhemina Kovacs // Acoustic Reconnaissance)  : ACTIVE    // Early Stage III");
+                    print("- APERTURE-09 (Finn Kovacs      // Telemetry Demodulation )  : CONFINED  // Stage III");
+                    print("- APERTURE-10 (Valentina Serova // Optical Vector Lead)      : DECEASED  // Autopsied (BIO-03)");
+                    print("- APERTURE-11 (Audrey Lind      // Geodetic Survey Lead)     : ACTIVE    // Stage II");
+                    print("- APERTURE-12 (                 // Astronomy Lead)           :");
+                    print("- APERTURE-13");
+                    print("- APERTURE-14");
+                    print(" ");
+                    print("--------------------------------------------------------------------------------", "dim");
+                    print("5. CONCLUDING MANDATE", "cyan");
+                    print("--------------------------------------------------------------------------------", "dim");
+                    print("Ground Unit 07 must be unlocked before Chief Eng. Chen reaches Stage IV. Once his optic");
+                    print("tract fully calcifies, there will be no living operative capable of aligning the");
+                    print("internal quartz deadbolt.");
+                    print(" ");
+                    print("Exposure rotation protocols must be strictly enforced. No technician may exced");
+                    print("four cumulative contact hours per week in Bay 3 without amber polarization shield.");
+                    print(" ");
+                    print("If an operative dies before the box is seated, their remains must not be buried");
+                    print("in wet earth. Crystalline tissue acts as an underground antenna. Bury only in dry,");
+                    print("saline alluvium beneath three layers of vulcanized rubber.");
+                    print(" ");
+                    print("\"To be Witnessed Is To Be Refined.\"","cyan");
+                    print("================================================================================\n", "dim");
                     break;
 
                 default:
