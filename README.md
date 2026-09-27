@@ -1,8 +1,8 @@
 # Eye-of-God
 ## REPO: OCULUS_RECOVERY_PROJECT
 **MAINTAINER:** Khallenghar  
-**STATUS:** ACTIVE / INVESTIGATING
-**LAST COMMIT:** 4:00:00 UTC 27.09.2026
+**STATUS:** ACTIVE / INVESTIGATING  
+**LAST COMMIT:** 4:12:00 UTC 27.09.2026
 
 ---
 
@@ -15,45 +15,45 @@ I managed to extract the raw partition data from his drive arrays and mirrored t
 
 **LIVE TERMINAL MIRROR:** **[https://aphelion.moe.page/](https://aphelion.moe.page/)**
 
-You can log into the terminal socket using the `guest` interface (or try using Operative Credentials if you figure out the cipher passphrase) toquery live archives using commands like `archives` and `read <ID>`.
+You can login to the terminal socket using the `guest` interface (or try using Operative Credentials if you figure out the cipher passphrase) toquery live archives using commands like `archives` and `read <ID>`.
 
-According to [Skrail's Journal](docs/journal_entry_oct_29_2009.md), he kept a heavy, deadbolted braass and wood artifact — **Ground Unit 07** — hidden in a steamer trunk at his house for years. But when I searched his home after he vanished, the trunk was open and empty. I eventually found the box hidden in the back of his locked campus office closet, wrapped in a tarp.
+According to [Skrail's Journal](docs/journal_entry_oct_29_2009.md), he kept a heavy, deadbolted brass and wood artifact — **Ground Unit 07**, hidden in a steamer trunk at his house for years. But when I searched his home after he vanished, the trunk was open and empty. I eventually found the box hidden in the back of his locked campus office closet, wrapped in a tarp.
 
-It's a custom **Reverse Geocache Box**: a locked chest with an LCD screen, a single push-button, an internal GPS module, and a high-draw solenoid latch. It will **ONLY** fire its internal lock when physically carried to one exact set of target coordinates on Earth. Those coordinates are encrypted inside the database files I mirrored on **Aphelion**.
+It's a custom **Reverse Geocache Box**, a locked chest with an LCD screen, a single push-button, an internal GPS module, and a high-draw solenoid latch. It will **ONLY** fire its internal lock when physically carried to one exact set of target coordinates on Earth. Those coordinates are encrypted inside the database files I mirrored on **Aphelion**.
 
 ---
 
 ### RECOVERED JOURNAL ENTRIES (DR. SKRAIL)
 
-#### 1. `[PAGE 61 - MARCH 16, 2004](docs/journal_entry_mar_14_2004.md)` — The Escape to Iowa Granary
+#### 1. `[PAGE 61 - MARCH 16, 2004]` — The Escape to Iowa Granary
 * **The Calcification Reversal:** Skrail notes that after nine years of his knuckles having the density of glazed porcelain, his hands became soft and ""feeble" as his body moved away from Station 04.
 * **The Death of Dr. Chen:** Clarifies that Chen did not burn; his eyes crystallized into two convex beads of pure, unflawed topaz in **4.12 seconds** during the flare. The light projected Ground Unit 07's wiring schematic directly onto the zinc tile behind him.
 * **Asset Evacuation:** Skrail dragged Ground Unit 07 by its nylon sling across the service ramp while the halon tanks blew and the air turned the color of raw lard.
 
-#### 2. `[PAGE 84 - OCTOBER 29, 2009](docs/journal_entry_oct_29_2009.md)` — The Steamer Trunk & Departmental Funds
+#### 2. `[PAGE 84 - OCTOBER 29, 2009]` — The Steamer Trunk & Departmental Funds
 * **Non-Euclidean Deviation:** Skrail bought a surveyor's theodolite with university funds to measure an un-collapsing non-Euclidean angle in the corner of his lecture hall where the projector shadow hits the molding.
 * **Relic Containment:** Ground Unit 07 is kept wrapped in four wool blankets inside a steamer trunk at the foot of his bed. During pre-thunrderstorm humidity, the brass corner seams weep clear, odorless grease.
-* **Target Behaviour:** *'It knows where it needs to sit. It wants the benchmark where the shadow falls south."*
+* **Target Behaviour:** *"It knows where it needs to sit. It wants the benchmark where the shadow falls south."*
 
-#### 3. `[Page ?? - NOVEMBER 14, 2011](docs/journal_entry_nov_14_2011.md)` — Telegraphic Pairs & The Book of Chen
-* **Transmission Protocol:** Skrail realizes Array-04 burst tape numbers (1-9) map back to classical telegraphic pairs (`.. .- .`/ `-. -- -`/ `. /-`) across a three-state radio system (*Tone*, *Space*, *Vacuum*).
-* ** The Nine-Letter Lock:** Numbers dissolve back into 9-letter sequences. Chen locked the coordinate buffer behind his own manual, forcing anyone attempting decryption to subtract his book first.
+#### 3. `[Page ?? - NOVEMBER 14, 2011]` — Telegraphic Pairs & The Book of Chen
+* **Transmission Protocol:** Skrail realizes Array-04 burst tape numbers (1-9) map back to classical telegraphic pairs (.. .- ./  -. -- -/ /. /- //) across a three-state radio system (*Tone*, *Space*, *Vacuum*).
+* **The Nine-Letter Lock:** Numbers dissolve back into 9-letter sequences. Chen locked the coordinate buffer behind his own manual, forcing anyone attempting decryption to subtract his book first.
 
-#### 4. `[PAGE 112 - AUGUST 04,2010](docs/journal_last_entry.md)` — The Eye Exam, The Student, & *The Perihelion*
+#### 4. `[PAGE 112 - AUGUST 04,2010]` — The Eye Exam, The Student, & *The Perihelion*
 * **Surgical Refusal:** Skrail refused synthetic intraocular lens implants, fearing plastic would disrupt the residual grid etched directly into his vitreous humor during the 1994 White Flare.
-* **observation of Khallenghar:** Skrail grew envy of me, he was disgusted mad after catching me staring at an ink stain on his desk blotter. He wrote: *"It makes me sick to watch him blink... He doesn't know that every time the lid drops, the horizon shifts four thousandths of a degree."*
-* **Cardiac Arrest & Click:** Skrail reports a missing cardiac pulse between the 40th and 41th beat ("the vacuum / perihelion"). At 3:14 AM, the trunk under his bed produced a single metallic click — a locj tooth settling deeper.
-* **Final Entry Note:** *"The room has five corners tonight'"*
+* **Observation of Khallenghar:** Skrail grew envy of me, he was disgusted mad after catching me staring at an ink stain on his desk blotter. He wrote: *"It makes me sick to watch him blink... He doesn't know that every time the lid drops, the horizon shifts four thousandths of a degree."*
+* **Cardiac Arrest & Click:** Skrail reports a missing cardiac pulse between the 40th and 41th beat ("the vacuum/perihelion"). At 3:14 AM, the trunk under his bed produced a single metallic click — a lock tooth settling deeper.
+* **Final Entry Note:** *"The room has five corners tonight."*
 
 ---
 
 ### HARDWARE SPECIFICATIONS: GROUND UNIT 07
 From Skrail's database notes (`SPEC-884`) and my own physical inspection of the box sitting on my desk:
 
-* **Display Interface:** NA
-* **Trigger Mechanism:** NA
-* **Power Supply:** NA
-* **Lockout Penalty:** NA
+* **Display Interface:** N/A
+* **Trigger Mechanism:** N/A
+* **Power Supply:** N/A
+* **Lockout Penalty:** N/A
 
 ---
 
@@ -62,19 +62,19 @@ To find where Ground Unit 07 wants to go, we need to run the raw telemetry strea
 
 
 
-> **Lecture Note Warning:** *'Always subtract the drift step to untwist the cornea. If you don't back-rotate the letters before setting your compass, the latitude will land three miles into the marsh."*
+> **Lecture Note Warning:** *"Always subtract the drift step to untwist the cornea. If you don't back-rotate the letters before setting your compass, the latitude will land three miles into the marsh."*
 
 ---
 
-### INVESTIGATION LOG (BY KHALLENGHAR,ME)
+### INVESTIGATION LOG (BY ME)
 
 #### **ENTRY 01: The Desk Blotter**
-I was just sitting in his office during office hours askinf about Syracuse. I wasn't looking at him — I was looking at the way the blue ink from his fountain pen had soaked into the corner of the green desk felt. It didn't spread in a circle. It bled out into sharp, straight lines like a circuit board layout.
+I was just sitting in his office during office hours asking about Syracuse. I wasn't looking at him — I was looking at the way the blue ink from his fountain pen had soaked into the corner of the green desk felt. It didn't spread in a circle. It bled out into sharp, straight lines like a circuit board layout.
 
 He covered it with his grade book so fast he knocked his coffee over.
 
 #### **ENTRY 02: The Steamer Trunk**
-When I went to his house after he stopped coming to campus, the front door was unlocked. The steamer trunk at the foot of his bed was wide open. Inside were four wool blankets — damp and stiff with grease — and a rectangular dust-free indentation in the lining.
+When I went to his house after he stopped coming to campus, the front door was unlocked. The steamer trunk at the foot of his bed was wide open. Inside were four wool blankets, damp and stiff with grease, and a rectangular dust-free indentation in the lining.
 
 Whatever **Ground Unit 07** was, he had moved it out of his house shortly before vanishing.
 
