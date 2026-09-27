@@ -229,6 +229,7 @@
         }
 
         function playTapCode(word) {
+            initAudio();
             const tapGrid = {
                 'A':[1,1],'B':[1,2],'C':[1,3],'D':[1,4],'E':[1,5],
                 'F':[2,1],'G':[2,2],'H':[2,3],'I':[2,4],'J':[2,5],
@@ -258,6 +259,7 @@
 
         //morse
         function playMorse(str) {
+            initAudio();
             const morseMap = {
             'A':'.-','B':'-...','C':'-.-.','D':'-..','E':'.','F':'..-.',
             'G':'--.','H':'....','I':'..','J':'.---','K':'-.-','L':'.-..',
@@ -290,7 +292,8 @@
 
                     osc.connect(gain);
                     gain.connect(audioCtx.destination);
-                    osc.start(now + dur);
+                    osc.start(now);
+                    osc.stop(now + dur);
                     now += dur + dot;
                 }
                 now += dot * 3;
@@ -493,8 +496,8 @@
                         print("  [9] PURGE-04    [RESTRICTED] - Automatic Decontamination Directive");
                         print("\n[ERR]: Authentication missing. Use 'login' to elevate clearance.", "alert");
                     } else {
-                        print("  [1] MED-1998    [DECRYPTED]  - Dr. Rostova Deposition // Planetary Shunt Theory", "amber");
-                        print("  [2] LOG-0041    [DECRYPTED]  - Dr. Aris Thorne Witness Deposition", "amber");
+                        print("  [1] MED-1998    [DECRYPTED]  - Dr. Rosalind Deposition // Planetary Shunt Theory", "amber");
+                        print("  [2] LOG-0041    [DECRYPTED]  - Dr. Katherine Franklin Witness Deposition", "amber");
                         print("  [3] SEC-0012    [DECRYPTED]  - Station 03 High-Pass Filter & Clockwise Grid Note", "amber");
                         print("  [4] SURG-04     [DECRYPTED]  - Operative Carter Cornea Resection", "amber");
                         print("  [5] DIR-FINAL   [DECRYPTED]  - Cold Asset Orders // Null-Vector & Mantle Drift", "amber");
@@ -557,12 +560,12 @@
                     const tape = parts[1] ? parts[1].toUpperCase() : '';
                     initAudio();
 
-                    if (tape === 'TAPE-09') {
+                    if (tape === 'TAPE-09' || tape === 'TAPE09' || tape === '09') {
                         print("\n>> STREAMING TAPE-09: 1420.4 MHz CARRIER BEACON...", "cyan");
                         print("[SPECTROGRAM SHOWS PERIODIC DISSONANCE IN HIGH REGISTER]", "dim");
                         playMorse("TAPE 04 IS NOT STATIC");
 
-                    } else if (tape === 'TAPE-04') {
+                    } else if (tape === 'TAPE-04' || tape === 'TAPE04' || tape === '04') {
                         print("\n>> STREAMING TAPE-04: SUB-BASEMENT STRUCTURAL DRAIN...", "amber");
                         print("[ACOUSTIC FILTER APPLIED: SUPPRESSING WATER INTERFERENCE]", "dim");
                         print("Listening to sub-crustal impacts...\n", "dim");
@@ -682,7 +685,7 @@
                     print("\n=== ARCHIVE LOG-0041: RECOVERED COMM CABLE [TAPE 09-CORRUPTED] ===", "cyan");
                     print("SOURCE: SECTOR-04 REC-DECK // RECOVERY DATE: UNDEFINED\n");
                     print("03:14:02 - [Static. Rhythmic metallic pinging, 1.42s intervals.]");
-                    print("03:14:19 - \"...not an echo. Why did Vance say echo? Echo implies distance.");
+                    print("03:14:19 - \"...not an echo. Why did Niel say echo? Echo implies distance.");
                     print("             It has no distance. The wall is zero millimeters from my teeth.\"");
                     print("03:14:40 - [Sound of a fingernail scratching painted drywall, continuous.]");
                     print("03:15:01 - \"Listen to the ridge between 1420 and 1421. It’s not static. It’s");
