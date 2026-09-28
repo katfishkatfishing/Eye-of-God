@@ -1,85 +1,82 @@
-# Eye-of-God
-## REPO: OCULUS_RECOVERY_PROJECT
-**MAINTAINER:** Khallenghar  
-**STATUS:** ACTIVE / INVESTIGATING  
-**LAST COMMIT:** 4:12:00 UTC 27.09.2018
+# mirror-aphelion // skrail_archive_temp
+**README.md** | Commit: `8f1c402` (Auto-sync via local daemon)  
+*Last pushed: 04:12 UTC — 3 hours before Departmental lockout*
 
 ---
 
-### READ THIS FIRST
-My name is Khallenghar. I'm a senior at ███-█████ majoring in Ancient History. Two weeks ago, my advisor, **Dr. Skrail**, vanished from campus.
+### If you are from Campus Security or the Iowa State Patrol:
+**Do not close this repository.** 
 
-Before he disappeared, I discovered he was directly involved in building and maintaining an isolated, encrypted cold-vault database for a covert group called **The Oculus**. He was the sole survivor who fled the **March 14, 2004** decontamination purge at Station 04 (`PURGE-04`), escaping into Iowa with a deadbolted artifact in his station wagon.
+My name is Khallenghar. I am an undergraduate senior in the Department of History at [REDACTED]. I was Dr. Alistair Skrail’s teaching assistant for HIST-340 (*Monastic Cryptography and Late Medieval Logistics*). 
 
-I managed to extract the raw partition data from his drive arrays and mirrored the entire terminal interface online so anyone can help me inspect it:
+Dr. Skrail did not "voluntarily resign" or abandon his lease as the dean claims. His house on Elm Street was unlocked. The refrigerator was running, his tea kettle had boiled dry until the coil burned out, and the steamer trunk he kept bolted to the subfloor at the foot of his bed had been forced open from the inside out. 
 
-**LIVE TERMINAL MIRROR:** **[https://aphelion.moe.page/](https://aphelion.moe.page/)**
+I found the drive arrays in his campus office. I also found the chest. 
 
-According to [Skrail's Journal](docs/journal_entry_oct_29_2009.md), he kept a heavy, deadbolted brass and wood artifact — **Ground Unit 07**, hidden in a steamer trunk at his house for years. But when I searched his home after he vanished, the trunk was open and empty. I eventually found the box hidden in the back of his locked campus office closet, wrapped in a tarp.
+I’ve mirrored the terminal filesystem from his SCSI drive to an external web host because my campus account is already being flagged for bandwidth anomalies:
 
----
-
-### RECOVERED JOURNAL ENTRIES (DR. SKRAIL)
-
-#### 1. `[PAGE 61 - MARCH 16, 2004]` — The Escape to Iowa Granary
-* **The Calcification Reversal:** Skrail notes that after nine years of his knuckles having the density of glazed porcelain, his hands became soft and ""feeble" as his body moved away from Station 04.
-* **The Death of Dr. Chen:** Clarifies that Chen did not burn; his eyes crystallized into two convex beads of pure, unflawed topaz in **4.12 seconds** during the flare. The light projected Ground Unit 07's wiring schematic directly onto the zinc tile behind him.
-* **Evacuation:** Skrail managed to bring with him a partition of the database and the Ground Unit 07 from the station.
-
-#### 2. `[PAGE 84 - OCTOBER 29, 2009]` — The Steamer Trunk & Departmental Funds
-* **Non-Euclidean Deviation:** Skrail bought a surveyor's theodolite with university funds to measure an un-collapsing non-Euclidean angle in the corner of his lecture hall where the projector shadow hits the molding.
-* **Relic Containment:** Ground Unit 07 is kept wrapped in four wool blankets inside a steamer trunk at the foot of his bed. During pre-thunrderstorm humidity, the brass corner seams weep clear, odorless grease.
-* **Target Behaviour:** *"It knows where it needs to sit. It wants the benchmark where the shadow falls south."*
-
-#### 3. `[Page ?? - NOVEMBER 14, 2011]` — Telegraphic Pairs & The Book of Chen
-* **Transmission Protocol:** Skrail realizes Array-04 burst tape numbers (1-9) map back to classical telegraphic pairs (.. .- ./  -. -- -/ /. /- //) across a three-state radio system (*Tone*, *Space*, *Vacuum*).
-* **The Nine-Letter Lock:** Numbers dissolve back into 9-letter sequences. Chen locked the coordinate buffer behind his own manual, forcing anyone attempting decryption to subtract his book first.
-
-#### 4. `[PAGE 112 - AUGUST 04,2010]` — The Eye Exam, Me, & *The Perihelion*
-* **Surgical Refusal:** Skrail refused synthetic intraocular lens implants, fearing plastic would disrupt the residual grid etched directly into his vitreous humor during the 1994 White Flare.
-* **Observations of me:** Skrail grew envy of me, he was disgusted mad after catching me staring at an ink stain on his desk blotter. He wrote: *"It makes me sick to watch him blink... He doesn't know that every time the lid drops, the horizon shifts four thousandths of a degree."*
-* **Cardiac Arrest & Click:** Skrail reports a missing cardiac pulse between the 40th and 41th beat ("the vacuum/perihelion"). At 3:14 AM, the trunk under his bed produced a single metallic click — a lock tooth settling deeper.
-* **Final Entry Note:** *"The room has five corners tonight."*
+> **LIVE DRIVE MIRROR:** **[https://aphelion.moe.page/](https://aphelion.moe.page/)**  
+> *(If it asks for credentials, look at his syllabus marginalia below. I haven't cracked the root partition yet.)*
 
 ---
 
-### THE DECRYPTION PIPELINE (HELP NEEDED)
-To find where Ground Unit 07 wants to go, we need to run the raw telemetry stream (`VEC-FINAL` from `aphelion.moe.page`) through Dr. Chen's algorithm as detailed in Skrail's lecture marginalia:
+### WHAT IS IN THE OFFICE CLOSET (Ground Unit 07)
 
+I didn't steal it. I moved it back to my apartment because two men in gray field jackets were asking the janitorial staff about the service elevators on Monday night.
 
+It isn't a university asset. It’s an oblong chest—maybe 18 kilos—cast in heavy, cold bell bronze with modern socket-head machine screws holding an aluminum faceplate over what looks like a modified geodetic survey rig. 
 
-> **Lecture Note Warning:** *"Always subtract the drift step to untwist the cornea. If you don't back-rotate the letters before setting your compass, the latitude will land three miles into the marsh."*
-
----
-
-### INVESTIGATION LOG (BY ME)
-
-#### **ENTRY 01: The Desk Blotter**
-I was just sitting in his office during office hours asking about Syracuse. I wasn't looking at him — I was looking at the way the blue ink from his fountain pen had soaked into the corner of the green desk felt. It didn't spread in a circle. It bled out into sharp, straight lines like a circuit board layout.
-
-He covered it with his grade book so fast he knocked his coffee over.
-
-#### **ENTRY 02: The Steamer Trunk**
-When I went to his house after he stopped coming to campus, the front door was unlocked. The steamer trunk at the foot of his bed was wide open. Inside were four wool blankets, damp and stiff with grease, and a rectangular dust-free indentation in the lining.
-
-Whatever **Ground Unit 07** was, he had moved it out of his house shortly before vanishing.
-
-When I went back to clear out his campus office, I used his departmental key set to open the locked filing closet behind his desk. Ground Unit 07 was sitting on the bottom shelf, wrapped in a blue tarp, sweating grease onto his lecture printouts.
-
-#### **ENTRY 03: Trithemius**
-I always wondered why Dr. Skrail was so obsessed with monastic history and 16th-century abbots when his degree was in astrophysics. Among his estate papers, I found a rubbing taken from the bronze plate beneath the modern battery compartment on the box.
-
-It's an engraving of a weeping eye enclosed in a triangle, surrounded by the words PAX UNA. Skrail had scribbled under it in red ballpoint.
-
-"They thought it was an angel. They thought turning into glass was peace. Chen put a battery on an altar and called it an engineering project."
-
-What was he looking for in those European caves? What is the Speculatores?
-
-#### **ENTRY 04: Physical Symptoms**
-My eyes have been burning since Tuesday. The optometrist at the student health centre told me my corneas look dry, like I've been staring at a welder's flash without protection. All I've been doing is reading his notes and hosting the mirror.
-
-Everytime I hit the wake button on Ground Unit 07, the LCD flashes red on 1420.4 MHz for a split second before showing the distance. My hands are starting to feel stiff when I type.
+* **The fluid:** It’s wrapped in two blue poly tarps on my kitchen floor, but it keeps leaking. Not oil. It’s a completely clear, odorless grease that feels cold to the touch and ruins paper instantly. It soaked through sixty pages of my Syracuse seminar notes before I noticed.
+* **The display:** There is an auxiliary 16x2 LCD grafted onto the top plate behind a thick quartz lens. If you trip the toggle switch, the backlight doesn't glow amber—it flashes a harsh, violet red, pulses `1420.405 MHz`, and then defaults to an error: `RANGE: OUT OF PARITY // TOLERANCE > 15M`.
+* **The latch:** There are no keyholes. The seam between the lid and the base is held by an internal solenoid deadbolt. It doesn't budge, but at night you can hear a small servo inside stepping forward and back, like a clockwork escapement that can't find its tooth.
 
 ---
 
-<!--  -->
+### TRANSCRIPTS FROM HIS DESK JOURNALS
+*(He kept three black ledger notebooks hidden behind the Loeb Classical Library volumes. The handwriting gets progressively worse after 2004. You can see where his fountain pen literally gouged through the rag paper because he was pressing down with dead weight. I simplified the diary entries here, look for the complete entire in the docs folder.)*
+
+#### `[Entry: march_04]`
+> *"The knuckles are soft. That is what made me sick in the sink behind the silo. For nine years, every time I hit the iron bench in Bay 3, it chimed like porcelain. Now it gives in. I can squeeze the meat of my own thumb and feel it squish like wet bread...*
+> 
+> *Chen didn't burn. That’s what the halon alarm told my ears, but my eyes saw the topaz. Four seconds. In 4.12 seconds the flare went through the back of his neck and turned both corneas into hard, clear beads. The light didn't stop. It projected the circuit traces of Unit 07 straight through his skull and scorched them into the zinc floor tiles...*
+> 
+> *The sky has gone blunt. Ninety-degree corners everywhere I look. It’s like living inside a cardboard carton after the spotlight has been kicked out."*
+
+#### `[Entry: oct_09]`
+> *"I bought the Wild T2 with departmental discretionary funds. Let the committee think I am cataloging late-Roman stone quarries. I set the tripod on the library roof at dusk...*
+> 
+> *The box under the bed knows the weather before the barometer does. When the humidity climbs, the seams sweat. It wants the benchmark where the granite doesn't conduct. It wants the null-point where the shadow falls south... I spent six hours on the rug with Chen's manual open to page 74 until the carbon ink turned into gray hair. It’s a running key, but the terminal buffer won't accept the string until the rotation is reversed."*
+
+#### `[Entry: aug_18]`
+*(This is the entry from the week before he stopped showing up to lectures. He was writing about me while I was sitting across from his desk.)*
+> *"The boy stayed behind again. He wasn't looking at the Syracuse maps. He was staring at the corner of my green blotter where the blue ink soaked through the felt...*
+> 
+> *I had to drop my ledger over it before he saw the sequence: Aperture-03. He just sat there, blinking. It makes me ill to watch him do it. The lid goes down, the lid comes up. Smooth. Effortless. He has no idea that every time the skin drops over his pupil, the local horizon slips four thousandths of a degree. He takes his eyes for granted like an animal...*
+> 
+> *The chest clicked at 3:14 AM. Not an unlock—the deadbolt settling deeper into the mortise. The room had five corners when I turned the lamp off."*
+
+---
+
+### WHAT WE NEED TO DECODE
+
+There is a raw telemetry block dumped from `aphelion.moe.page` under the buffer handle `BURST-88` / `VEC-FINAL`. 
+
+
+Skrail left notes scribbled across his lecture draft (*"The Steganography of Trithemius and Abbot Sponheim"*). He wasn't teaching history; he was using the curriculum to figure out how to un-jam Chen’s calculations.
+
+From his margin notes:
+1. **The Book:** Decoding that string yields the pass-title for Chen's engineering manual.
+2. **The Warning:** His slide margin has a red ink box drawn around it:  
+   `"Always subtract the drift step (n-1) to untwist the cornea. If you don't back-rotate the letters before setting your compass, the latitude will land three miles into the marsh."`
+
+---
+
+### NOTES / LOGS (KHALLENGHAR)
+
+* **Update (Sept 24):** Found a charcoal rubbing in his filing cabinet taken from the bottom plate of the brass chest. Underneath the modern battery tray, the 15th-century bronze has an inscription: `PAX UNA // UT VIDEATUR, PURGANDUM EST` (*One Peace // To Be Witnessed, It Must Be Refined*). He wrote underneath it: *"Chen thought he was building an attenuator. He put a battery on an altar and called it an engineering project."*
+* **Update (Sept 26):** My eyes have been watering constantly. I went to the student clinic thinking it was conjunctivitis from the dust in his study. The triage nurse said both corneas show concentric micro-abrasions, like I’ve been looking at an unshielded arc welder. I haven't used anything brighter than a desk lamp.
+* **Update (Sept 27):** I'm having trouble typing this update. The second joints on my index and middle fingers feel dry and stiff, like there’s fine sand inside the knuckle capsules. When I tap them on the aluminum frame of my laptop, it doesn't sound like skin hitting metal. It sounds like two dry river stones clicking together.
+
+If anyone knows how to access the terminal or has access to an SDR tuned to 1420.4 MHz in the Midwest, post an issue or pull request immediately. 
+
+I don't think I have much time before someone comes for the closet key.
