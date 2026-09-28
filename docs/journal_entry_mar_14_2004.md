@@ -1,23 +1,23 @@
 [PAGE 61 - DATED: MARCH 16, 2004]
 
-My hands are soft. The is the first thing that made me vomit.
+I stopped at a public rest stop outside of Des Moines because the steering wheel felt heavy.
 
-For nine years, my knuckles had the density of glazed porcelain. When I struck the metal workbench in Bay 3, it made the clean chime of porcelain striking cold iron. Now, they are feeble. I pressed my right index finger against the steering wheel of the station wagon until the nail went white, and I felt meat. Pliable, sickening meat.
+When I reached into my pocket for the station wagon keys, I grazed my knuckle against the metal zipper. It stung.
 
-The station is gone.
+I stood there by the front fender for five minutes just looking at the back of my hand. A thin, red line. A tiny bead of dark, wet blood pooling on the surface. Real blood. Not the clear resin that used to glaze over before it could drip.
 
-Chen's face did not shatter. That is a lie my memory is already trying to tell me to keep my ribs from seizing. It crystallized. The flare caught him between the third and fourth harmonic pulse. In four seconds, four point one two seconds, his eyes didn't boil. They hardened into two convex beads of pure, unflawed topaz. The light passed straight through the back of his cranium and etched the wiring schematic of Ground Unit 07 directly onto the zinc tile behind him.
+I had forgotten that flesh is supposed to hurt when you tear it.
 
-The fire suppresion halon tanks blew. Everyone was screaming, but their mouths weren't making vowels. They were making the dry, rattling scrape of broken watch parts sliding down a chute. I grabbed the box. I grabbed a partition of the database. I didn't grab Chen's calipers. I didn't grab the spare FETs. 
+For nine years, I hadn't felt an itch. I hadn't felt the cold morning wind against the back of my neck. My joints were silent, seated, and  dense. Now, three hundred miles west of the array, the air inside my lungs feels wet and heavy, like I'm dragging pond water into my chest with every breath.
 
-Now I am parked behind a collapsed granary in Iowa. The engine is ticking. The static on the AM radio is just static.
+Chen didn't run. When the primary relay seized at 03:14, he didn't even drop his pencil. The flare took four seconds to clear the room, and when the air settled, he had not moved a single muscle. His posture didn't collapse, his neck didn't slacken. He remained seated at the drafting bench, perfectly balanced, looking straight through the quartz window into the empty yard.
 
-The sky has gone silent. The geometric angles have collapsed back into ninety-degree corners. The world looks flat, blunt, and empty. 
+His eyes were completely transparent. Not white, cataracts-just clear, unbroken glass that let the light pass straight through his head.
 
-I tried to calculate the third vector of the shunt on a scrap of paper, and I couldn't even remember why the square root of two required an ocular correction. 
+I took the box from the rack. It was surprisingly light.
+Or maybe I was still dense enough that eighteen kilos of bronze felt like nothing.
 
-My mind is healing.
+Now my back aches from sitting in the car seat. The engine is ticking as it cools. The radio only receives agricultural reports and weather advisories.
+The silence out here is filthy with noise.
 
-God forgive me. My mind is clearing. 
-
-With every clear thought, the salvation of this world slips through my fingers like water.
+My mind is clearing up.
