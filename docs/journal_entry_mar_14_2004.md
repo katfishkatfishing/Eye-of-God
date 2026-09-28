@@ -2,11 +2,11 @@
 
 My hands are soft. The is the first thing that made me vomit.
 
-For nine years, my knuckles had the density of glazed porcelain. When I struck the metal workbench in Bay 3, it made the clean chime of porcelain striking cold iron. Now, they are feeble. I pressed my right index finger against the streering wheel of the station wagon until the nail went white, and I felt meat. Pliable, sickening meat.
+For nine years, my knuckles had the density of glazed porcelain. When I struck the metal workbench in Bay 3, it made the clean chime of porcelain striking cold iron. Now, they are feeble. I pressed my right index finger against the steering wheel of the station wagon until the nail went white, and I felt meat. Pliable, sickening meat.
 
 The station is gone.
 
-Chen's face did not shatter. That is a lie my memory is already trying to tell me to keep my ribs from seizing. It crystallized. The flare caught him between the third and fourth harmonic pulse. In four seconds, four point one two seconds, his eyes did't boil. They hardened into two convex beads of pure, unflawed topaz. The light passed straight through the back of his cranium and etched the wiring schematic of Ground Unit 07 directly onto the zinc tile behind him.
+Chen's face did not shatter. That is a lie my memory is already trying to tell me to keep my ribs from seizing. It crystallized. The flare caught him between the third and fourth harmonic pulse. In four seconds, four point one two seconds, his eyes didn't boil. They hardened into two convex beads of pure, unflawed topaz. The light passed straight through the back of his cranium and etched the wiring schematic of Ground Unit 07 directly onto the zinc tile behind him.
 
 The fire suppresion halon tanks blew. Everyone was screaming, but their mouths weren't making vowels. They were making the dry, rattling scrape of broken watch parts sliding down a chute. I grabbed the box. I grabbed a partition of the database. I didn't grab Chen's calipers. I didn't grab the spare FETs. 
 
