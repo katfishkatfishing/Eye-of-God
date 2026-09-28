@@ -8,7 +8,7 @@ The station is gone.
 
 Chen's face did not shatter. That is a lie my memory is already trying to tell me to keep my ribs from seizing. It crystallized. The flare caught him between the third and fourth harmonic pulse. In four seconds, four point one two seconds, his eyes did't boil. They hardened into two convex beads of pure, unflawed topaz. The light passed straight through the back of his cranium and etched the wiring schematic of Ground Unit 07 directly onto the zinc tile behind him.
 
-The fire suppresion halon tanks blew. Everyone was screaming, but their mouths weren't making vowels. They were making the dry, rattling scrape of broken watch parts sliding down a chute. I grabbed the box. I didn't grab Chen's calipers. I didn't grab the spare FETs. I dragged Unit 07 by its nylon sling across the service ramp while the air behind me turned the color of raw lard.
+The fire suppresion halon tanks blew. Everyone was screaming, but their mouths weren't making vowels. They were making the dry, rattling scrape of broken watch parts sliding down a chute. I grabbed the box. I grabbed a partition of the database. I didn't grab Chen's calipers. I didn't grab the spare FETs. 
 
 Now I am parked behind a collapsed granary in Iowa. The engine is ticking. The static on the AM radio is just static.
 
