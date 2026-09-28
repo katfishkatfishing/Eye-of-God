@@ -7,7 +7,7 @@
 ### If you are from Campus Security or the Iowa State Patrol:
 **Do not close this repository.** 
 
-My name is Khallenghar. I am an undergraduate senior in the Department of History at [REDACTED]. I was Dr. Alistair Skrail’s teaching assistant for HIST-340 (*Monastic Cryptography and Late Medieval Logistics*). 
+My name is Khallenghar. I am an undergraduate senior in the Department of History at [REDACTED]. I was Dr. Alexander Skrail’s teaching assistant for HIST-340 (*Monastic Cryptography and Late Medieval Logistics*). 
 
 Dr. Skrail did not "voluntarily resign" or abandon his lease as the dean claims. His house on Elm Street was unlocked. The refrigerator was running, his tea kettle had boiled dry until the coil burned out, and the steamer trunk he kept bolted to the subfloor at the foot of his bed had been forced open from the inside out. 
 
