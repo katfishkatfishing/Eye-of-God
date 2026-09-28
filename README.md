@@ -43,16 +43,6 @@ According to [Skrail's Journal](docs/journal_entry_oct_29_2009.md), he kept a he
 
 ---
 
-### HARDWARE SPECIFICATIONS: GROUND UNIT 07
-From Skrail's database notes (`SPEC-884`) and my own physical inspection of the box sitting on my desk:
-
-* **Display Interface:** N/A
-* **Trigger Mechanism:** N/A
-* **Power Supply:** N/A
-* **Lockout Penalty:** N/A
-
----
-
 ### THE DECRYPTION PIPELINE (HELP NEEDED)
 To find where Ground Unit 07 wants to go, we need to run the raw telemetry stream (`VEC-FINAL` from `aphelion.moe.page`) through Dr. Chen's algorithm as detailed in Skrail's lecture marginalia:
 
@@ -76,18 +66,20 @@ Whatever **Ground Unit 07** was, he had moved it out of his house shortly before
 
 When I went back to clear out his campus office, I used his departmental key set to open the locked filing closet behind his desk. Ground Unit 07 was sitting on the bottom shelf, wrapped in a blue tarp, sweating grease onto his lecture printouts.
 
-#### **ENTRY 03: Physical Symptoms**
-My eyes have been burning since Tuesday. The optometrist at the student health centre told me my corneas look dry, like I've been staring at a welder's flash without protection. All I've been doing is reading his notes and hosting the mirror at `aphelion.moe.page`.
-
-Everytime I hit the wake button on Ground Unit 07, the LCD flashes red on 1420.4 MHz for a split second before showing the distance. My hands are starting to feel stiff when I type.
-
----
-
-**"To Be Witnessed Is to Be Refined."**
-<!-- I always wondered why Dr. Skrail was so obsessed with monastic history and 16th-century abbots when his degree was in astrophysics. Among his estate papers, I found a rubbing taken from the bronze plate beneath the modern battery compartment on the box.
+#### **ENTRY 03: Trithemius**
+I always wondered why Dr. Skrail was so obsessed with monastic history and 16th-century abbots when his degree was in astrophysics. Among his estate papers, I found a rubbing taken from the bronze plate beneath the modern battery compartment on the box.
 
 It's an engraving of a weeping eye enclosed in a triangle, surrounded by the words PAX UNA. Skrail had scribbled under it in red ballpoint.
 
 "They thought it was an angel. They thought turning into glass was peace. Chen put a battery on an altar and called it an engineering project."
 
-What was he looking for in those European caves? -->
+What was he looking for in those European caves? What is the Speculatores?
+
+#### **ENTRY 04: Physical Symptoms**
+My eyes have been burning since Tuesday. The optometrist at the student health centre told me my corneas look dry, like I've been staring at a welder's flash without protection. All I've been doing is reading his notes and hosting the mirror.
+
+Everytime I hit the wake button on Ground Unit 07, the LCD flashes red on 1420.4 MHz for a split second before showing the distance. My hands are starting to feel stiff when I type.
+
+---
+
+<!--  -->

@@ -29,7 +29,7 @@ Zero functional receptors. He is wrong.
 
 The right one still registers the cold. If the circuit board wakes, it won't ask for a name. The machine only recognizes the pupil that stayed open when the roof came down.
 
-Aperture-3. Nearest to the sun. It only breathes when the count is zero. 
+Aperture-03. Nearest to the sun. It only breathes when the count is zero. 
 
 Everything is crowded. 
 
