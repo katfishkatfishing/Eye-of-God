@@ -23,14 +23,13 @@ Chen didn't alter the text. He used the 1730 setting verbatim.
 
 "The rays to speak properly are not coloured..."
 
-Tried the residual string against the Cedar County benchmark when I got home. Ended up in the marsh drainage ditch again.
+Tried the residual string when I got home. Ended up in the marsh drainage ditch again.
 
 Stupid.
 
 Attempt 1:
 Stripped *Opticks* verbatim.
-Result: 41° 42' 11" N, 91° 14' 02" W
--> Plot check: Cedar County drainage canal / standing water.
+Result: Standing water
 -> IMPOSSIBLE. Chen knew standing water acts as an ungrounded mirror. 
    The dish would flare instantly. 
 
