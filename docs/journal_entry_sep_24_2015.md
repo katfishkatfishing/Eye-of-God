@@ -10,8 +10,7 @@ He blinks every four seconds. A wet, soft wipe of skin over fluid.
 
 It makes me sick. His eyes are too clear.
 
-He has no idea how much energy he wastes just keeping his eyes wet. He has no idea how noisy it is to exist like that. Pumping blood through 600 000
-miles of vessels just to sit in a chair and ask about ancient history.
+He has no idea how much energy he wastes just keeping his eyes wet. He has no idea how noisy it is to exist like that. Pumping blood through 600000 miles of vessels just to sit in a chair and ask about ancient history.
 
 He glanced down at the corner of my desk blotter.
 
