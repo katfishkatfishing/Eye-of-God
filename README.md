@@ -32,27 +32,7 @@ It isn't a university asset. It’s a box—maybe 18 kilos—cast in heavy, cold
 ---
 
 ### TRANSCRIPTS FROM HIS DESK JOURNALS
-*(He kept three black ledger notebooks hidden behind the Loeb Classical Library volumes. The handwriting gets progressively worse after 2004. You can see where his fountain pen literally gouged through the rag paper because he was pressing down with dead weight. I simplified the diary entries here, look for the complete entire in the docs folder.)*
-
-#### `[Entry: march_04]`
-> *"The knuckles are soft. That is what made me sick in the sink behind the silo. For nine years, every time I hit the iron bench in Bay 3, it chimed like porcelain. Now it gives in. I can squeeze the meat of my own thumb and feel it squish like wet bread...*
-> 
-> *Chen didn't burn. That’s what the halon alarm told my ears, but my eyes saw the topaz. Four seconds. In 4.12 seconds the flare went through the back of his neck and turned both corneas into hard, clear beads. The light didn't stop. It projected the circuit traces of Unit 07 straight through his skull and scorched them into the zinc floor tiles...*
-> 
-> *The sky has gone blunt. Ninety-degree corners everywhere I look. It’s like living inside a cardboard carton after the spotlight has been kicked out."*
-
-#### `[Entry: oct_09]`
-> *"I bought the Wild T2 with departmental discretionary funds. Let the committee think I am cataloging late-Roman stone quarries. I set the tripod on the library roof at dusk...*
-> 
-> *The box under the bed knows the weather before the barometer does. When the humidity climbs, the seams sweat. It wants the benchmark where the granite doesn't conduct. It wants the null-point where the shadow falls south... I spent six hours on the rug with Chen's manual open to page 74 until the carbon ink turned into gray hair. It’s a running key, but the terminal buffer won't accept the string until the rotation is reversed."*
-
-#### `[Entry: aug_18]`
-*(This is the entry from the week before he stopped showing up to lectures. He was writing about me while I was sitting across from his desk.)*
-> *"The boy stayed behind again. He wasn't looking at the Syracuse maps. He was staring at the corner of my green blotter where the blue ink soaked through the felt...*
-> 
-> *I had to drop my ledger over it before he saw the sequence: Aperture-03. He just sat there, blinking. It makes me ill to watch him do it. The lid goes down, the lid comes up. Smooth. Effortless. He has no idea that every time the skin drops over his pupil, the local horizon slips four thousandths of a degree. He takes his eyes for granted like an animal...*
-> 
-> *The chest clicked at 3:14 AM. Not an unlock—the deadbolt settling deeper into the mortise. The room had five corners when I turned the lamp off."*
+*(He kept three black ledger notebooks hidden behind the Loeb Classical Library volumes. The handwriting gets progressively worse after 2004. You can see where his fountain pen literally gouged through the rag paper because he was pressing down with dead weight. Look for the complete entire in the docs folder.)*
 
 ---
 
